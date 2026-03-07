@@ -3,6 +3,16 @@
 
 			       November 30, 2016
 
+Fork note:  
+
+Jon Allen - March 7, 2026
+
+See BUILD_REPORT.md for newer instructions.
+
+This compiles 32 bit on Mondern Linux Mint.  
+
+End fork note:
+
 0 Quick Start
 
    ~CLU is used to represent the CLU root directory.  Initially ~CLU is the
