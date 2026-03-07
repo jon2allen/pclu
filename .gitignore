@@ -45,7 +45,3 @@ code/gc-7.2/libatomic_ops/tests/Makefile
 *.pc
 
 # Project specific ignores
-BUILD_REPORT.md
-hello.clu
-hello.c
-clu_compile.sh
