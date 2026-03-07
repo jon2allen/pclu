@@ -16,6 +16,12 @@
 
 #include "private/gc_priv.h"
 
+#if defined(NEED_FIND_LIMIT) \
+     || (defined(USE_PROC_FOR_LIBRARIES) && defined(THREADS))
+  JMP_BUF GC_jmp_buf;
+#endif
+
+
 #if defined(LINUX) && !defined(POWERPC)
 # include <linux/version.h>
 # if (LINUX_VERSION_CODE <= 0x10400)

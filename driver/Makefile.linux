@@ -4,16 +4,16 @@
 
 # Options for compiling the driver
 
-CC     = gcc
-CFLAGS = -g
+CC     = gcc -m32
+CFLAGS = -m32 -fcommon  -g
 
 # Options to compile into the driver
 
 PCLU_CLUHOME         = $(CLUHOME)
 PCLU_CC              = $(CC)
-PCLU_CFLAGS          = -w
-PCLU_CFLAGS_DEBUG    = -w
-PCLU_CFLAGS_OPTIMIZE = -w -O2
+PCLU_CFLAGS          = -m32 -fcommon -w
+PCLU_CFLAGS_DEBUG    = -m32 -fcommon -w
+PCLU_CFLAGS_OPTIMIZE = -m32 -fcommon -w -O2
 
 # Pass options for compiling driver.o
 

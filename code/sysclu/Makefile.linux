@@ -2,7 +2,7 @@
 
 # Compilation flags for subdirectories of this directory
 
-CFLAGS         = -I../../include -c
+CFLAGS         = -m32 -fcommon  -I../../include -c
 
 OPT_FLAGS      = -O2 
 DEBUG_FLAGS    = -g 

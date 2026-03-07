@@ -1,1 +1,1 @@
-cc -I~CLU/include/debug -w -c -g
+gcc -m32 -fcommon -I~CLU/include/debug -w -c -g

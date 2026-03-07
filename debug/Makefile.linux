@@ -2,7 +2,7 @@
 
 # Generates .o files for debugging.
 
-CFLAGS = -I${CLUHOME}/code/include -w -O2
+CFLAGS = -m32 -fcommon  -I${CLUHOME}/code/include -w -O2
 #CFLAGS = -I${CLUHOME/code/include -w -g
 
 RM    = /bin/rm -f
