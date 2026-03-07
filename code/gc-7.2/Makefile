@@ -133,9 +133,9 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-build_triplet = i686-pc-linux-gnu
-host_triplet = i686-pc-linux-gnu
-target_triplet = i686-pc-linux-gnu
+build_triplet = x86_64-unknown-linux-gnu
+host_triplet = x86_64-unknown-linux-gnu
+target_triplet = x86_64-unknown-linux-gnu
 check_PROGRAMS = gctest$(EXEEXT) leaktest$(EXEEXT) middletest$(EXEEXT) \
 	smashtest$(EXEEXT) hugetest$(EXEEXT) realloc_test$(EXEEXT) \
 	staticrootstest$(EXEEXT) $(am__EXEEXT_1) $(am__EXEEXT_2) \
@@ -692,7 +692,7 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/garland/Documents/pclu/code/gc/missing aclocal-1.14
+ACLOCAL = ${SHELL} /home/jon2allen/github2/pclu/code/gc-7.2/missing aclocal-1.14
 AMTAR = $${TAR-tar}
 AM_CFLAGS =  -fexceptions
 AM_CPPFLAGS = \
@@ -703,22 +703,22 @@ AM_DEFAULT_VERBOSITY = 1
 AR = ar
 ATOMIC_OPS_CFLAGS = -I$(top_builddir)/libatomic_ops/src -I$(top_srcdir)/libatomic_ops/src
 ATOMIC_OPS_LIBS = 
-AUTOCONF = ${SHELL} /home/garland/Documents/pclu/code/gc/missing autoconf
-AUTOHEADER = ${SHELL} /home/garland/Documents/pclu/code/gc/missing autoheader
-AUTOMAKE = ${SHELL} /home/garland/Documents/pclu/code/gc/missing automake-1.14
-AWK = gawk
+AUTOCONF = ${SHELL} /home/jon2allen/github2/pclu/code/gc-7.2/missing autoconf
+AUTOHEADER = ${SHELL} /home/jon2allen/github2/pclu/code/gc-7.2/missing autoheader
+AUTOMAKE = ${SHELL} /home/jon2allen/github2/pclu/code/gc-7.2/missing automake-1.14
+AWK = mawk
 CC = gcc
 CCAS = gcc
 CCASDEPMODE = depmode=gcc3
-CCASFLAGS = -g -O2 $(DEFS)
+CCASFLAGS = -m32 -fcommon $(DEFS)
 CCDEPMODE = depmode=gcc3
-CFLAGS = -g -O2 -fno-strict-aliasing
+CFLAGS = -m32 -fcommon -fno-strict-aliasing
 CPP = gcc -E
 CPPFLAGS = 
 CXX = g++
-CXXCPP = 
-CXXDEPMODE = depmode=none
-CXXFLAGS = 
+CXXCPP = g++ -E
+CXXDEPMODE = depmode=gcc3
+CXXFLAGS = -g -O2
 CYGPATH_W = echo
 DEFS = -DHAVE_CONFIG_H
 DEPDIR = .deps
@@ -728,20 +728,20 @@ DUMPBIN =
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
-EGREP = /bin/grep -E
+EGREP = /usr/bin/grep -E
 EXEEXT = 
 EXTRA_TEST_LIBS = 
-FGREP = /bin/grep -F
+FGREP = /usr/bin/grep -F
 GC_CFLAGS =  -fexceptions
 GC_VERSION = 
-GREP = /bin/grep
+GREP = /usr/bin/grep
 INSTALL = /usr/bin/install -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
 INSTALL_SCRIPT = ${INSTALL}
 INSTALL_STRIP_PROGRAM = $(install_sh) -c -s
-LD = /usr/bin/ld
-LDFLAGS = 
+LD = /usr/bin/ld -m elf_i386
+LDFLAGS = -m32
 LIBOBJS = 
 LIBS = 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
@@ -749,9 +749,9 @@ LIPO =
 LN_S = ln -s
 LTLIBOBJS = 
 MAINT = #
-MAKEINFO = ${SHELL} /home/garland/Documents/pclu/code/gc/missing makeinfo
+MAKEINFO = ${SHELL} /home/jon2allen/github2/pclu/code/gc-7.2/missing makeinfo
 MANIFEST_TOOL = :
-MKDIR_P = /bin/mkdir -p
+MKDIR_P = /usr/bin/mkdir -p
 NM = /usr/bin/nm -B
 NMEDIT = 
 OBJDUMP = objdump
@@ -766,24 +766,24 @@ PACKAGE_TARNAME = gc
 PACKAGE_URL = 
 PACKAGE_VERSION = 7.2
 PATH_SEPARATOR = :
-PKG_CONFIG = 
+PKG_CONFIG = /usr/bin/pkg-config
 PKG_CONFIG_LIBDIR = 
 PKG_CONFIG_PATH = 
 RANLIB = ranlib
-SED = /bin/sed
+SED = /usr/bin/sed
 SET_MAKE = 
 SHELL = /bin/bash
 STRIP = strip
 THREADDLLIBS = -lpthread -ldl
 UNWINDLIBS = 
 VERSION = 7.2
-abs_builddir = /home/garland/Documents/pclu/code/gc
-abs_srcdir = /home/garland/Documents/pclu/code/gc
-abs_top_builddir = /home/garland/Documents/pclu/code/gc
-abs_top_srcdir = /home/garland/Documents/pclu/code/gc
+abs_builddir = /home/jon2allen/github2/pclu/code/gc-7.2
+abs_srcdir = /home/jon2allen/github2/pclu/code/gc-7.2
+abs_top_builddir = /home/jon2allen/github2/pclu/code/gc-7.2
+abs_top_srcdir = /home/jon2allen/github2/pclu/code/gc-7.2
 ac_ct_AR = ar
 ac_ct_CC = gcc
-ac_ct_CXX = 
+ac_ct_CXX = g++
 ac_ct_DUMPBIN = 
 addlibs = 
 addobjs =  mach_dep.lo
@@ -793,11 +793,11 @@ am__quote =
 am__tar = $${TAR-tar} chof - "$$tardir"
 am__untar = $${TAR-tar} xf -
 bindir = ${exec_prefix}/bin
-build = i686-pc-linux-gnu
+build = x86_64-unknown-linux-gnu
 build_alias = 
-build_cpu = i686
+build_cpu = x86_64
 build_os = linux-gnu
-build_vendor = pc
+build_vendor = unknown
 builddir = .
 datadir = ${datarootdir}
 datarootdir = ${prefix}/share
@@ -805,15 +805,15 @@ docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 extra_ldflags_libgc = 
-host = i686-pc-linux-gnu
+host = x86_64-unknown-linux-gnu
 host_alias = 
-host_cpu = i686
+host_cpu = x86_64
 host_os = linux-gnu
-host_vendor = pc
+host_vendor = unknown
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/garland/Documents/pclu/code/gc/install-sh
+install_sh = ${SHELL} /home/jon2allen/github2/pclu/code/gc-7.2/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -830,12 +830,12 @@ sharedstatedir = ${prefix}/com
 srcdir = .
 subdirs =  libatomic_ops
 sysconfdir = ${prefix}/etc
-target = i686-pc-linux-gnu
+target = x86_64-unknown-linux-gnu
 target_alias = 
 target_all = libgc.la
-target_cpu = i686
+target_cpu = x86_64
 target_os = linux-gnu
-target_vendor = pc
+target_vendor = unknown
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
@@ -1382,28 +1382,28 @@ include tests/$(DEPDIR)/trace_test.Po
 #	$(AM_V_CC_no)$(LTCOMPILE) -c -o $@ $<
 
 .cc.o:
-#	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
-#	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
-#	$(am__mv) $$depbase.Tpo $$depbase.Po
-	$(AM_V_CXX)source='$<' object='$@' libtool=no \
-	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ $<
+	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
+	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
+#	$(AM_V_CXX)source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ $<
 
 .cc.obj:
-#	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
-#	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
-#	$(am__mv) $$depbase.Tpo $$depbase.Po
-	$(AM_V_CXX)source='$<' object='$@' libtool=no \
-	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
+	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.obj$$||'`;\
+	$(CXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ `$(CYGPATH_W) '$<'` &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Po
+#	$(AM_V_CXX)source='$<' object='$@' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(CXXCOMPILE) -c -o $@ `$(CYGPATH_W) '$<'`
 
 .cc.lo:
-#	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
-#	$(LTCXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
-#	$(am__mv) $$depbase.Tpo $$depbase.Plo
-	$(AM_V_CXX)source='$<' object='$@' libtool=yes \
-	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
-	$(AM_V_CXX_no)$(LTCXXCOMPILE) -c -o $@ $<
+	$(AM_V_CXX)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.lo$$||'`;\
+	$(LTCXXCOMPILE) -MT $@ -MD -MP -MF $$depbase.Tpo -c -o $@ $< &&\
+	$(am__mv) $$depbase.Tpo $$depbase.Plo
+#	$(AM_V_CXX)source='$<' object='$@' libtool=yes \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(AM_V_CXX_no)$(LTCXXCOMPILE) -c -o $@ $<
 
 .s.o:
 	$(AM_V_CCAS)$(CCASCOMPILE) -c -o $@ $<
