@@ -8,7 +8,9 @@ Managed to consolidate the multi-platform build process in the top-level `Makefi
   ```makefile
   PLATFORM := $(shell uname -s | tr '[:upper:]' '[:lower:]')
   ```
-- **Unified Logic**: The same `Makefile` now automatically configures symlinks for the specific OS it is running on, allowing developers to simply run `gmake` on any supported platform.
+- **Unified Logic**: The same `Makefile` now automatically configures symlinks for the specific OS it is running on. 
+> [!IMPORTANT]
+> Developers on FreeBSD or other non-Linux systems **must** use `gmake`. The default BSD `make` (bmake) does not support the shell probing and export syntax used for cross-platform automation.
 
 ## 2. Eliminating Hardcoded Native Flags
 Previously, the code relied on explicit `-DFREEBSD` or `-DLINUX` flags in Makefiles. This has been modernized:

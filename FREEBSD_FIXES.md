@@ -3,6 +3,9 @@
 This report documents the specific changes made to allow Portable CLU (PCLU) to compile and run on **FreeBSD 15 (32-bit)**. 
 
 ## 1. Build System Setup
+> [!IMPORTANT]
+> On FreeBSD, you **must** use `gmake` (GNU Make). The system's default `make` (BSD Make / bmake) is incompatible with the modernized cross-platform syntax used in this project.
+
 - **Makefile links**: Configured the build system to use `Makefile.freebsd` by linking it to `Makefile.linux` across all 11 subdirectories.
 - **Modern Compiler Compatibility**:
   - Added `-std=gnu89` to all `CFLAGS` to support the legacy K&R-style C code generated from CLU.
