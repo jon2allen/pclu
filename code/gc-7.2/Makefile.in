@@ -712,7 +712,7 @@ CCAS = @CCAS@
 CCASDEPMODE = @CCASDEPMODE@
 CCASFLAGS = @CCASFLAGS@ $(DEFS)
 CCDEPMODE = @CCDEPMODE@
-CFLAGS = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-incompatible-function-pointer-types  @CFLAGS@
+CFLAGS = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  @CFLAGS@
 CPP = @CPP@
 CPPFLAGS = @CPPFLAGS@
 CXX = @CXX@

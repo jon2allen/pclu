@@ -9,7 +9,7 @@ CC = gcc
 
 FLUFF = *~ *.old *.bak .*~ .*.old .*.bak
 
-CFLAGS = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-incompatible-function-pointer-types  -m32 -std=gnu89 -fcommon  -c -O -w -I../include
+CFLAGS = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include
 #CFLAGS = -c -g -I../include 
 LFLAGS = -m32  -L${CLUHOME}/code -lpclu_opt -lgc -lm -lc -lpthread -g -Wl,--allow-multiple-definition
 

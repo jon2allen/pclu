@@ -61,7 +61,11 @@ configure:
 
 gc:
 	echo Installing and testing the garbage collector
-	cd code/gc;  make; make gctest; ./gctest
+	cd code/gc; \
+	if [ ! -f Makefile ] || [ ! -f include/private/config.h ]; then \
+		./configure CFLAGS="-m32 -fcommon -std=gnu89 -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration"; \
+	fi; \
+	make; make gctest; ./gctest
 
 clu: libpclu compiler clulibs cludent # PCLU debugger
 

@@ -2,7 +2,7 @@
 
 # Compilation flags for subdirectories of this directory
 
-CFLAGS         = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-incompatible-function-pointer-types  -m32 -std=gnu89 -fcommon  -c -I../../include
+CFLAGS         = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -I../../include
 OPT_FLAGS      = -O2 
 DEBUG_FLAGS    = -g 
 DEBUGGER_FLAGS =  -O2

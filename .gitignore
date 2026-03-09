@@ -51,3 +51,16 @@ test32*
 test_indent*
 test_union_cast*
 code/gc-7.2/gctest
+
+# GC and Autotools generated files
+code/gc-7.2/include/private/config.h
+code/gc-7.2/**/.deps/
+code/gc-7.2/**/.libs/
+code/gc-7.2/bdw-gc.pc
+code/gc-7.2/libatomic_ops/**/*.pc
+code/gc-7.2/libatomic_ops/config.log
+code/gc-7.2/libatomic_ops/config.status
+code/gc-7.2/libatomic_ops/libtool
+code/gc-7.2/libatomic_ops/src/config.h
+code/gc-7.2/libatomic_ops/src/config.h.in
+code/gc-7.2/include/private/config.h.in

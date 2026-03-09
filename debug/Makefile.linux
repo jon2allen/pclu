@@ -2,7 +2,7 @@
 
 # Generates .o files for debugging.
 
-CFLAGS = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-incompatible-function-pointer-types  -m32 -std=gnu89 -fcommon  -I${CLUHOME}/code/include -w -O2
+CFLAGS = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -I${CLUHOME}/code/include -w -O2
 #CFLAGS = -I${CLUHOME/code/include -w -g
 
 RM    = /bin/rm -f
