@@ -4,7 +4,7 @@
 #include "pclu_err.h"
 #include "pclu_sys.h"
 
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 extern int maxheapsize;
 extern int blks_min_gc;
 

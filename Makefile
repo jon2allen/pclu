@@ -16,7 +16,9 @@
 #   (b) Adding #define athena to CLUHOME/include/pclu_sys.h (to get
 #       smaller executables at the cost of some speed),
 
-PLATFORM = linux
+PLATFORM := $(shell uname -s | tr '[:upper:]' '[:lower:]')
+CLUHOME := $(shell pwd)
+export CLUHOME
 
 EXEDIR = exe
 
@@ -89,7 +91,7 @@ compiler:
 	echo Building and installing the pclu compiler
 	echo Assumes that CLUHOME is set properly
 	cd code/cmp; make
-	mv code/cmp/pclu $(EXEDIR)/pclu
+	${MV} code/cmp/pclu $(EXEDIR)/pclu
 
 clulibs:
 	echo Building CLU runtime libraries
@@ -102,7 +104,7 @@ debugger:
 PCLU:
 	echo 'Building and installing the PCLU driver (an alternative to pclu/plink)'
 	cd driver; make PCLU
-	mv driver/PCLU $(EXEDIR)/PCLU
+	${MV} driver/PCLU $(EXEDIR)/PCLU
 
 install:
 	echo Installing PCLU in ${INSTALL_DIR}
@@ -121,7 +123,7 @@ example: fictitious_file
 
 cludent: fictitious_file
 	cd cludent; make
-	mv cludent/cludent $(EXEDIR)/cludent
+	${MV} cludent/cludent $(EXEDIR)/cludent
 
 newcompiler:
 	cd cmpclu; make
@@ -135,7 +137,7 @@ fictitious_file:
 clean:
 	for i in ${CLEANDIRS}; do (cd $$i; make clean); done
 	${RM} ${FLUFF}
-	cd ${EXEDOR}; ${RM} ${FLUFF}
+	cd ${EXEDIR}; ${RM} ${FLUFF}
 
 veryclean:
 	${RM} ${FLUFF}

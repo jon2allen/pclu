@@ -1,1 +1,1 @@
-ccopt.cmd.linux
+ccopt.cmd.freebsd

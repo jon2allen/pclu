@@ -1066,7 +1066,7 @@ long n;
   long ans;
 
   ans = n + store_size;
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
   if (ans < MAXOBJSZ) {
 #ifdef MERGE_SIZES
     extern long size_map[];

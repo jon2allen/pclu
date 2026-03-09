@@ -26,7 +26,7 @@ static char rcsid[] = "$Header: _all_dir_entries_.c,v 1.4 91/06/06 13:42:42 dcur
 /*						*/
 
 #include <sys/types.h>
-#include <sys/dir.h>
+#include <dirent.h>
 #undef signal
 #include "pclu_err.h"
 #include "pclu_sys.h"
@@ -50,17 +50,17 @@ DIR *dirp;
 errcode err;
 CLUREF name, name_len, lenp1;
 int i;
-struct direct *dp;
+struct dirent *dp;
 
 	dirp = opendir(dir.str->data);
 	if (dirp == (DIR *)NULL) signal(ERR_ok);
 	for (;;) {
 		errno = 0;
 		dp = readdir(dirp);
-		if (dp == (struct direct *)NULL) break;
-		if (dp ->d_reclen == 1 && !strcmp(dp->d_name, ".")) continue;
-		if (dp ->d_reclen == 2 && !strcmp(dp->d_name, "..")) continue;
-		name_len.num = dp->d_reclen;
+		if (dp == (struct dirent *)NULL) break;
+		if (strlen(dp->d_name) == 1 && !strcmp(dp->d_name, ".")) continue;
+		if (strlen(dp->d_name) == 2 && !strcmp(dp->d_name, "..")) continue;
+		name_len.num = strlen(dp->d_name);
 		lenp1.num = name_len.num + 1;
 		err = _bytevecOPcreate(lenp1, &name);
 		if (err != ERR_ok) resignal(err);
@@ -78,6 +78,6 @@ struct direct *dp;
 		if (err == ERR_iterforbodyreturn) signal(err);
 		if (err == ERR_iterforbodysignal) signal(err);
 		}
-	close(dirp);
+	closedir(dirp);
 	signal(ERR_ok);
 	}

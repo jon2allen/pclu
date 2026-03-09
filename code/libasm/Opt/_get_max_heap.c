@@ -3,7 +3,7 @@
 #include "pclu_err.h"
 #include "pclu_sys.h"
 
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 errcode _get_max_heap(ans)
 CLUREF *ans;
 {

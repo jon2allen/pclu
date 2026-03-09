@@ -26,7 +26,7 @@ static char rcsid[] = "$Header: _free_space.c,v 1.2 91/06/06 13:45:33 dcurtis Ex
 #include "pclu_err.h"
 #include "pclu_sys.h"
 
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 extern int maxheapsize;
 extern int composite_in_use;
 

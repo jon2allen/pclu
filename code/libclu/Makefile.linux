@@ -2,7 +2,7 @@
 
 # Compilation flags for subdirectories of this directory
 
-CFLAGS         = -m32 -fcommon  -I../../include -I../../gc/include/private -c -w
+CFLAGS         = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-incompatible-function-pointer-types  -m32 -std=gnu89 -fcommon  -I../../include -I../../gc/include/private -c -w
 OPT_FLAGS      = -O2 
 DEBUG_FLAGS    = -g 
 DEBUGGER_FLAGS = -O2 -g

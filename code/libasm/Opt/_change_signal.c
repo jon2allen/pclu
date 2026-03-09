@@ -38,8 +38,13 @@ int err;
 struct sigaction vec, ovec;
 
 	vec.sa_handler = (void (*)())label.ref;
-#if defined(LINUX) && !defined(OLD_LINUX)
-	vec.sa_mask.__val[0] = 0xff7bf0e0;
+#if (defined(LINUX) || defined(FREEBSD)) && !defined(OLD_LINUX)
+	#ifdef FREEBSD
+vec.sa_mask.__bits[0]
+#else
+vec.sa_mask.__val[0]
+#endif
+ = 0xff7bf0e0;
 #else
 	vec.sa_mask = 0xff7bf0e0;
 #endif

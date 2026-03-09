@@ -34,7 +34,7 @@ static char rcsid[] = "$Header: connected_dir.c,v 1.5 91/07/08 10:38:01 root Exp
 #include "pclu_err.h"
 #include "pclu_sys.h"
 
-#ifdef LINUX
+#if (defined(LINUX) || defined(FREEBSD)) || defined(FREEBSD)
 #include <unistd.h>
 #else
 extern char *getwd();
@@ -50,7 +50,7 @@ CLUREF temp;
 errcode err;
 CLUREF lenp1;
 
-#ifdef LINUX
+#if (defined(LINUX) || defined(FREEBSD)) || defined(FREEBSD)
 	result = getcwd(name, MAXPATHLEN);
 #else
 	result = getwd(name);

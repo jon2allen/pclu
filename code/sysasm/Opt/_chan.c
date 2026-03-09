@@ -61,7 +61,7 @@ static char rcsid[] = "$Header: /pm/src/site/pclu/code/base/RCS/_chan.c,v 1.11 9
 #include <sys/types.h>
 #include <sys/file.h>
 /* #include <sys/ioctl.h> */
-#ifdef LINUX
+#if (defined(LINUX) || defined(FREEBSD)) || defined(FREEBSD)
 #include <unistd.h>
 #include <termios.h>
 #include <sys/ioctl.h>
@@ -733,7 +733,7 @@ _chan *ch = (_chan *)chref.ref;
 	if (image.tf == true && ch->typ.num == tty) 
 		lit = true;
 		else lit = false;
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
 	for (;;) {
@@ -749,7 +749,7 @@ _chan *ch = (_chan *)chref.ref;
 			}
 		break;
 		}
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIC, LLITOUT);
 #endif
 	signal(ERR_ok);
@@ -772,7 +772,7 @@ _chan *ch = (_chan *)chref.ref;
 	if (image.tf == true && ch->typ.num == tty) 
 		lit = true;
 		else lit = false;
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
 	for (;;) {
@@ -788,7 +788,7 @@ _chan *ch = (_chan *)chref.ref;
 			}
 		break;
 		}
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIC, LLITOUT);
 #endif
 	signal(ERR_ok);
@@ -811,7 +811,7 @@ _chan *ch = (_chan *)chref.ref;
 	if (image.tf == true && ch->typ.num == tty) 
 		lit = true;
 		else lit = false;
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
 		for (;;) {
@@ -828,7 +828,7 @@ _chan *ch = (_chan *)chref.ref;
 			}
 		break;
 		}
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIC, LLITOUT);
 #endif
 	signal(ERR_ok);
@@ -855,7 +855,7 @@ _chan *ch = (_chan *)chref.ref;
 	if (image.tf == true && ch->typ.num == tty) 
 		lit = true;
 		else lit = false;
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
 	size = top - low.num + 1;
@@ -873,7 +873,7 @@ _chan *ch = (_chan *)chref.ref;
 			}
 		break;
 		}
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIC, LLITOUT);
 #endif
 	signal(ERR_ok);
@@ -901,7 +901,7 @@ _chan *ch = (_chan *)chref.ref;
 	if (image.tf == true && ch->typ.num == tty) 
 		lit = true;
 		else lit = false;
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
 	size = top - low.num + 1;
@@ -919,7 +919,7 @@ _chan *ch = (_chan *)chref.ref;
 			}
 		break;
 		}
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIC, LLITOUT);
 #endif
 	signal(ERR_ok);
@@ -1035,7 +1035,7 @@ CLUREF bv;
 {
 int result;
 
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(fd, TIOCLBIS, LLITOUT);
 #endif
 	for (;;) {
@@ -1051,7 +1051,7 @@ int result;
 			}
 		break;
 		}
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(fd, TIOCLBIC, LLITOUT);
 #endif
 	signal(ERR_ok);

@@ -27,7 +27,7 @@ EXE_SUFFIX=.exe
 srcdir= .
 VPATH= $(srcdir)
 
-CFLAGS= -gstabs+ -O2 -I$(srcdir)/include -DATOMIC_UNCOLLECTABLE -DALL_INTERIOR_POINTERS -DNO_EXECUTE_PERMISSION
+CFLAGS= -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-incompatible-function-pointer-types  -gstabs+ -O2 -I$(srcdir)/include -DATOMIC_UNCOLLECTABLE -DALL_INTERIOR_POINTERS -DNO_EXECUTE_PERMISSION
 
 # Look into doc/README.macros for the description of the "define arguments"
 # influencing the collector configuration.

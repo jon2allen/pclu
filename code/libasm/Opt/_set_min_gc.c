@@ -6,7 +6,7 @@
 
 extern int blks_min_gc;
 
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 errcode _set_min_gc(n)
 CLUREF n;
 {

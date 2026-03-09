@@ -32,13 +32,13 @@ static char rcsid[] = "$Header: _signal.c,v 1.4 91/07/09 15:23:22 root Exp $";
 #include "pclu_sys.h"
 
 #include <sys/types.h>
-#include <sys/dir.h>
+#include <dirent.h>
 
 extern CLUREF clu_empty_string;
 extern char **environ;
 extern int wrpipe;
 #include <errno.h>
-#ifdef LINUX
+#if (defined(LINUX) || defined(FREEBSD)) || defined(FREEBSD)
 #define gcflag GC_collection_in_progress()
 extern int gcflag;
 #else

@@ -44,4 +44,10 @@ code/gc-7.2/libatomic_ops/tests/Makefile
 # System specific package configs
 *.pc
 
-# Project specific ignores
+# Debug artifacts from FreeBSD transition
+build.log
+fix_dirent.pl
+test32*
+test_indent*
+test_union_cast*
+code/gc-7.2/gctest

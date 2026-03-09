@@ -56,7 +56,7 @@ extern void *gc_malloc();
 extern void exit();
 extern void find_ops_init();
 extern void find_selops_init();
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 extern void expand_hp();
 extern struct obj * gc_malloc();
 #endif
@@ -127,7 +127,7 @@ int _argc;
 char **_argv, **_envp;
 {
 errcode err, pgmerr;
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 struct sigstack ss, oss;
 #endif
 OWNPTR save_own_ptr;
@@ -184,7 +184,7 @@ struct timezone tz;
 
 /* set up stack for signal handlers */
 
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 	ss.ss_onstack = 1;
 	ss.ss_sp = (char *)gc_malloc(100);
 	sigstack(&ss, &oss);
@@ -284,7 +284,7 @@ struct timezone tz;
 */
 
 #undef errcmp
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 bool errcmp(s1, s2)
 char *s1, *s2;
 {
@@ -314,7 +314,9 @@ long longs2 = (long)s2;
 	}
 #endif
 
+#if !defined(FREEBSD)
 extern int sys_nerr;
+#endif
 extern long clu_nerr;
 
 /* Routine to convert a clu signal to a string */

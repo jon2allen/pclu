@@ -1,59 +1,31 @@
-backgraph.lo: backgraph.c /usr/include/stdc-predef.h \
- include/private/dbg_mlc.h include/private/gc_priv.h \
- include/private/config.h include/private/../gc.h \
- include/private/../gc_version.h include/private/../gc_config_macros.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
- /usr/include/features.h /usr/include/features-time64.h \
- /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \
- /usr/include/sys/cdefs.h /usr/include/bits/long-double.h \
- /usr/include/gnu/stubs.h /usr/include/gnu/stubs-32.h \
- include/private/../gc_pthread_redirects.h /usr/include/pthread.h \
- /usr/include/sched.h /usr/include/bits/types.h \
- /usr/include/bits/typesizes.h /usr/include/bits/time64.h \
- /usr/include/bits/types/time_t.h \
- /usr/include/bits/types/struct_timespec.h /usr/include/bits/endian.h \
- /usr/include/bits/endianness.h /usr/include/bits/sched.h \
- /usr/include/bits/types/struct_sched_param.h /usr/include/bits/cpu-set.h \
- /usr/include/time.h /usr/include/bits/time.h /usr/include/bits/timex.h \
- /usr/include/bits/types/struct_timeval.h \
- /usr/include/bits/types/clock_t.h /usr/include/bits/types/struct_tm.h \
- /usr/include/bits/types/clockid_t.h /usr/include/bits/types/timer_t.h \
- /usr/include/bits/types/struct_itimerspec.h \
- /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
- /usr/include/bits/pthreadtypes.h /usr/include/bits/thread-shared-types.h \
- /usr/include/bits/pthreadtypes-arch.h \
- /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
- /usr/include/bits/struct_rwlock.h /usr/include/bits/setjmp.h \
- /usr/include/bits/types/__sigset_t.h \
- /usr/include/bits/types/struct___jmp_buf_tag.h \
- /usr/include/bits/pthread_stack_min-dynamic.h /usr/include/dlfcn.h \
- /usr/include/bits/dlfcn.h /usr/include/bits/dl_find_object.h \
- /usr/include/signal.h /usr/include/bits/signum-generic.h \
- /usr/include/bits/signum-arch.h /usr/include/bits/types/sig_atomic_t.h \
- /usr/include/bits/types/sigset_t.h /usr/include/bits/types/siginfo_t.h \
- /usr/include/bits/types/__sigval_t.h /usr/include/bits/siginfo-arch.h \
- /usr/include/bits/siginfo-consts.h \
- /usr/include/bits/siginfo-consts-arch.h \
- /usr/include/bits/types/sigval_t.h /usr/include/bits/types/sigevent_t.h \
- /usr/include/bits/sigevent-consts.h /usr/include/bits/sigaction.h \
- /usr/include/bits/sigcontext.h /usr/include/bits/types/stack_t.h \
- /usr/include/sys/ucontext.h /usr/include/bits/sigstack.h \
- /usr/include/bits/sigstksz.h /usr/include/unistd.h \
- /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
- /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
- /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h \
- /usr/include/linux/close_range.h /usr/include/bits/ss_flags.h \
- /usr/include/bits/types/struct_sigstack.h /usr/include/bits/sigthread.h \
- /usr/include/bits/signal_ext.h /usr/include/stdlib.h \
- /usr/include/bits/libc-header-start.h /usr/include/bits/waitflags.h \
- /usr/include/bits/waitstatus.h /usr/include/bits/floatn.h \
- /usr/include/bits/floatn-common.h /usr/include/sys/types.h \
- /usr/include/bits/stdint-intn.h /usr/include/endian.h \
- /usr/include/bits/byteswap.h /usr/include/bits/uintn-identity.h \
- /usr/include/sys/select.h /usr/include/bits/select.h \
- /usr/include/alloca.h /usr/include/bits/stdlib-float.h \
+backgraph.lo: backgraph.c include/private/dbg_mlc.h \
+ include/private/gc_priv.h include/private/config.h \
+ include/private/../gc.h include/private/../gc_version.h \
+ include/private/../gc_config_macros.h \
+ /usr/local/lib/gcc14/gcc/x86_64-portbld-freebsd15.0/14.2.0/include/stddef.h \
+ /usr/include/sys/_types.h /usr/include/machine/_types.h \
+ /usr/include/x86/_types.h /usr/include/machine/_limits.h \
+ /usr/include/x86/_limits.h include/private/../gc_pthread_redirects.h \
+ /usr/include/pthread.h /usr/include/sys/cdefs.h \
+ /usr/include/sys/_visible.h /usr/include/sys/_pthreadtypes.h \
+ /usr/include/sys/_sigset.h /usr/include/sys/_sigval.h \
+ /usr/include/sched.h /usr/include/sys/types.h \
+ /usr/include/machine/endian.h /usr/include/x86/endian.h \
+ /usr/include/sys/_endian.h /usr/include/sys/_stdint.h \
+ /usr/include/sys/bitcount.h /usr/include/sys/select.h \
+ /usr/include/sys/_timeval.h /usr/include/sys/timespec.h \
+ /usr/include/sys/_timespec.h /usr/include/sys/sched.h \
+ /usr/include/sys/cpuset.h /usr/include/sys/_cpuset.h \
+ /usr/include/sys/_bitset.h /usr/include/sys/bitset.h /usr/include/time.h \
+ /usr/include/sys/_null.h /usr/include/sys/_clock_id.h \
+ /usr/include/xlocale/_time.h /usr/include/dlfcn.h /usr/include/signal.h \
+ /usr/include/sys/signal.h /usr/include/sys/_sigaltstack.h \
+ /usr/include/machine/signal.h /usr/include/x86/signal.h \
+ /usr/include/machine/ucontext.h /usr/include/x86/ucontext.h \
+ /usr/include/sys/_ucontext.h /usr/include/stdlib.h \
  include/private/../gc_tiny_fl.h include/private/../gc_mark.h \
- include/private/gcconfig.h include/private/gc_hdrs.h \
+ include/private/gcconfig.h /usr/include/unistd.h \
+ /usr/include/sys/unistd.h include/private/gc_hdrs.h \
  include/private/gc_locks.h libatomic_ops/src/atomic_ops.h \
  /usr/include/assert.h libatomic_ops/src/atomic_ops/sysdeps/gcc/x86.h \
  libatomic_ops/src/atomic_ops/sysdeps/gcc/../all_aligned_atomic_load_store.h \
@@ -68,109 +40,64 @@ backgraph.lo: backgraph.c /usr/include/stdc-predef.h \
  libatomic_ops/src/atomic_ops/sysdeps/gcc/../ao_t_is_int.h \
  libatomic_ops/src/atomic_ops/generalize.h \
  libatomic_ops/src/atomic_ops/generalize-small.h /usr/include/string.h \
- /usr/include/strings.h /usr/include/setjmp.h
-/usr/include/stdc-predef.h:
+ /usr/include/strings.h /usr/include/xlocale/_strings.h \
+ /usr/include/xlocale/_string.h /usr/include/setjmp.h \
+ /usr/include/machine/setjmp.h /usr/include/x86/setjmp.h \
+ /usr/include/machine/trap.h /usr/include/x86/trap.h
 include/private/dbg_mlc.h:
 include/private/gc_priv.h:
 include/private/config.h:
 include/private/../gc.h:
 include/private/../gc_version.h:
 include/private/../gc_config_macros.h:
-/usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h:
-/usr/include/features.h:
-/usr/include/features-time64.h:
-/usr/include/bits/wordsize.h:
-/usr/include/bits/timesize.h:
-/usr/include/sys/cdefs.h:
-/usr/include/bits/long-double.h:
-/usr/include/gnu/stubs.h:
-/usr/include/gnu/stubs-32.h:
+/usr/local/lib/gcc14/gcc/x86_64-portbld-freebsd15.0/14.2.0/include/stddef.h:
+/usr/include/sys/_types.h:
+/usr/include/machine/_types.h:
+/usr/include/x86/_types.h:
+/usr/include/machine/_limits.h:
+/usr/include/x86/_limits.h:
 include/private/../gc_pthread_redirects.h:
 /usr/include/pthread.h:
+/usr/include/sys/cdefs.h:
+/usr/include/sys/_visible.h:
+/usr/include/sys/_pthreadtypes.h:
+/usr/include/sys/_sigset.h:
+/usr/include/sys/_sigval.h:
 /usr/include/sched.h:
-/usr/include/bits/types.h:
-/usr/include/bits/typesizes.h:
-/usr/include/bits/time64.h:
-/usr/include/bits/types/time_t.h:
-/usr/include/bits/types/struct_timespec.h:
-/usr/include/bits/endian.h:
-/usr/include/bits/endianness.h:
-/usr/include/bits/sched.h:
-/usr/include/bits/types/struct_sched_param.h:
-/usr/include/bits/cpu-set.h:
-/usr/include/time.h:
-/usr/include/bits/time.h:
-/usr/include/bits/timex.h:
-/usr/include/bits/types/struct_timeval.h:
-/usr/include/bits/types/clock_t.h:
-/usr/include/bits/types/struct_tm.h:
-/usr/include/bits/types/clockid_t.h:
-/usr/include/bits/types/timer_t.h:
-/usr/include/bits/types/struct_itimerspec.h:
-/usr/include/bits/types/locale_t.h:
-/usr/include/bits/types/__locale_t.h:
-/usr/include/bits/pthreadtypes.h:
-/usr/include/bits/thread-shared-types.h:
-/usr/include/bits/pthreadtypes-arch.h:
-/usr/include/bits/atomic_wide_counter.h:
-/usr/include/bits/struct_mutex.h:
-/usr/include/bits/struct_rwlock.h:
-/usr/include/bits/setjmp.h:
-/usr/include/bits/types/__sigset_t.h:
-/usr/include/bits/types/struct___jmp_buf_tag.h:
-/usr/include/bits/pthread_stack_min-dynamic.h:
-/usr/include/dlfcn.h:
-/usr/include/bits/dlfcn.h:
-/usr/include/bits/dl_find_object.h:
-/usr/include/signal.h:
-/usr/include/bits/signum-generic.h:
-/usr/include/bits/signum-arch.h:
-/usr/include/bits/types/sig_atomic_t.h:
-/usr/include/bits/types/sigset_t.h:
-/usr/include/bits/types/siginfo_t.h:
-/usr/include/bits/types/__sigval_t.h:
-/usr/include/bits/siginfo-arch.h:
-/usr/include/bits/siginfo-consts.h:
-/usr/include/bits/siginfo-consts-arch.h:
-/usr/include/bits/types/sigval_t.h:
-/usr/include/bits/types/sigevent_t.h:
-/usr/include/bits/sigevent-consts.h:
-/usr/include/bits/sigaction.h:
-/usr/include/bits/sigcontext.h:
-/usr/include/bits/types/stack_t.h:
-/usr/include/sys/ucontext.h:
-/usr/include/bits/sigstack.h:
-/usr/include/bits/sigstksz.h:
-/usr/include/unistd.h:
-/usr/include/bits/posix_opt.h:
-/usr/include/bits/environments.h:
-/usr/include/bits/confname.h:
-/usr/include/bits/getopt_posix.h:
-/usr/include/bits/getopt_core.h:
-/usr/include/bits/unistd_ext.h:
-/usr/include/linux/close_range.h:
-/usr/include/bits/ss_flags.h:
-/usr/include/bits/types/struct_sigstack.h:
-/usr/include/bits/sigthread.h:
-/usr/include/bits/signal_ext.h:
-/usr/include/stdlib.h:
-/usr/include/bits/libc-header-start.h:
-/usr/include/bits/waitflags.h:
-/usr/include/bits/waitstatus.h:
-/usr/include/bits/floatn.h:
-/usr/include/bits/floatn-common.h:
 /usr/include/sys/types.h:
-/usr/include/bits/stdint-intn.h:
-/usr/include/endian.h:
-/usr/include/bits/byteswap.h:
-/usr/include/bits/uintn-identity.h:
+/usr/include/machine/endian.h:
+/usr/include/x86/endian.h:
+/usr/include/sys/_endian.h:
+/usr/include/sys/_stdint.h:
+/usr/include/sys/bitcount.h:
 /usr/include/sys/select.h:
-/usr/include/bits/select.h:
-/usr/include/alloca.h:
-/usr/include/bits/stdlib-float.h:
+/usr/include/sys/_timeval.h:
+/usr/include/sys/timespec.h:
+/usr/include/sys/_timespec.h:
+/usr/include/sys/sched.h:
+/usr/include/sys/cpuset.h:
+/usr/include/sys/_cpuset.h:
+/usr/include/sys/_bitset.h:
+/usr/include/sys/bitset.h:
+/usr/include/time.h:
+/usr/include/sys/_null.h:
+/usr/include/sys/_clock_id.h:
+/usr/include/xlocale/_time.h:
+/usr/include/dlfcn.h:
+/usr/include/signal.h:
+/usr/include/sys/signal.h:
+/usr/include/sys/_sigaltstack.h:
+/usr/include/machine/signal.h:
+/usr/include/x86/signal.h:
+/usr/include/machine/ucontext.h:
+/usr/include/x86/ucontext.h:
+/usr/include/sys/_ucontext.h:
+/usr/include/stdlib.h:
 include/private/../gc_tiny_fl.h:
 include/private/../gc_mark.h:
 include/private/gcconfig.h:
+/usr/include/unistd.h:
+/usr/include/sys/unistd.h:
 include/private/gc_hdrs.h:
 include/private/gc_locks.h:
 libatomic_ops/src/atomic_ops.h:
@@ -190,4 +117,10 @@ libatomic_ops/src/atomic_ops/generalize.h:
 libatomic_ops/src/atomic_ops/generalize-small.h:
 /usr/include/string.h:
 /usr/include/strings.h:
+/usr/include/xlocale/_strings.h:
+/usr/include/xlocale/_string.h:
 /usr/include/setjmp.h:
+/usr/include/machine/setjmp.h:
+/usr/include/x86/setjmp.h:
+/usr/include/machine/trap.h:
+/usr/include/x86/trap.h:

@@ -23,7 +23,7 @@ static char rcsid[] = "$Header: mint.c,v 1.3 91/07/09 15:18:13 root Exp $";
 /*						*/
 
 #include <sys/types.h>
-#include <sys/dir.h>
+#include <dirent.h>
 #include <limits.h>
 #undef signal
 #include "pclu_err.h"

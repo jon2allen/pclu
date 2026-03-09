@@ -21,7 +21,7 @@ static char rcsid[] = "$Header: _anyize.c,v 1.2 91/06/06 13:25:21 root Exp $";
 #include "pclu_sys.h"
 
 extern OWN_ptr _anyize_own_init;
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 extern char *heapstart, *heaplim;
 #endif
 
@@ -39,7 +39,7 @@ OWNPTR type_owns = CUR_PROC_VAR.proc->type_owns;
 		signal(ERR_ok);
 		}
 	/* test not correct for versions of gc using the stack */
-#ifdef LINUX
+#if (defined(LINUX) || defined(FREEBSD)) || defined(FREEBSD)
 	if (x.ref > GC_least_plausible_heap_addr && 
 				x.ref < GC_greatest_plausible_heap_addr &&
 #else

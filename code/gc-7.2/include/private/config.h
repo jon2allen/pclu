@@ -41,7 +41,7 @@
 /* #undef GC_DLL */
 
 /* Define to support FreeBSD pthreads. */
-/* #undef GC_FREEBSD_THREADS */
+#define GC_FREEBSD_THREADS 1
 
 /* Define to include support for gcj. */
 #define GC_GCJ_SUPPORT 1
@@ -59,7 +59,7 @@
 /* #undef GC_IRIX_THREADS */
 
 /* Define to support pthreads on Linux. */
-#define GC_LINUX_THREADS 1
+/* #undef GC_LINUX_THREADS */
 
 /* Define to support NetBSD pthreads. */
 /* #undef GC_NETBSD_THREADS */
@@ -228,7 +228,7 @@
 /* #undef _PTHREADS */
 
 /* Required define if using POSIX threads. */
-#define _REENTRANT 1
+/* #undef _REENTRANT */
 
 /* Define to `__inline__' or `__inline' if that's what the C compiler
    calls it, or to nothing if 'inline' is not supported under any name.  */

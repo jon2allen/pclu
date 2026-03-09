@@ -43,7 +43,7 @@
 #include "gc_hdrs.h"
 #include "gc_locks.h"
 #include "config.h"
-#ifdef LINUX
+#if (defined(LINUX) || defined(FREEBSD)) || defined(FREEBSD)
 #define gcollect GC_gcollect
 #define gccount GC_gc_no
 #define gc_init GC_init
@@ -377,7 +377,7 @@ extern errlist elist;
 
 /*	usage: Alloc(size_in_words, result_name) */
 
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 #ifdef MERGE_SIZES
 extern long size_map[];
 #define FL_SIZE_MAP(sz) (size_map[sz])
@@ -386,7 +386,7 @@ extern long size_map[];
 #endif
 #endif
 
-#ifdef LINUX
+#if (defined(LINUX) || defined(FREEBSD)) || defined(FREEBSD)
 #define allocobj _allocobj
 #endif
 
@@ -493,57 +493,57 @@ extern CLUREF CLU_48;
 extern CLUREF CLU_49;
 extern CLUREF CLU_50;
 #else
-#define CLU_0 0
-#define CLU_1 1
-#define CLU_2 2
-#define CLU_3 3
-#define CLU_4 4
-#define CLU_5 5
-#define CLU_6 6
-#define CLU_7 7
-#define CLU_8 8
-#define CLU_9 9
-#define CLU_10 10
-#define CLU_11 11
-#define CLU_12 12
-#define CLU_13 13
-#define CLU_14 14
-#define CLU_15 15
-#define CLU_16 16
-#define CLU_17 17
-#define CLU_18 18
-#define CLU_19 19
-#define CLU_20 20
-#define CLU_21 21
-#define CLU_22 22
-#define CLU_23 23
-#define CLU_24 24
-#define CLU_25 25
-#define CLU_26 26
-#define CLU_27 27
-#define CLU_28 28
-#define CLU_29 29
-#define CLU_30 30
-#define CLU_31 31
-#define CLU_32 32
-#define CLU_33 33
-#define CLU_34 34
-#define CLU_35 35
-#define CLU_36 36
-#define CLU_37 37
-#define CLU_38 38
-#define CLU_39 39
-#define CLU_40 40
-#define CLU_41 41
-#define CLU_42 42
-#define CLU_43 43
-#define CLU_44 44
-#define CLU_45 45
-#define CLU_46 46
-#define CLU_47 47
-#define CLU_48 48
-#define CLU_49 49
-#define CLU_50 50
+#define CLU_0 (CLUREF){.num = 0}
+#define CLU_1 (CLUREF){.num = 1}
+#define CLU_2 (CLUREF){.num = 2}
+#define CLU_3 (CLUREF){.num = 3}
+#define CLU_4 (CLUREF){.num = 4}
+#define CLU_5 (CLUREF){.num = 5}
+#define CLU_6 (CLUREF){.num = 6}
+#define CLU_7 (CLUREF){.num = 7}
+#define CLU_8 (CLUREF){.num = 8}
+#define CLU_9 (CLUREF){.num = 9}
+#define CLU_10 (CLUREF){.num = 10}
+#define CLU_11 (CLUREF){.num = 11}
+#define CLU_12 (CLUREF){.num = 12}
+#define CLU_13 (CLUREF){.num = 13}
+#define CLU_14 (CLUREF){.num = 14}
+#define CLU_15 (CLUREF){.num = 15}
+#define CLU_16 (CLUREF){.num = 16}
+#define CLU_17 (CLUREF){.num = 17}
+#define CLU_18 (CLUREF){.num = 18}
+#define CLU_19 (CLUREF){.num = 19}
+#define CLU_20 (CLUREF){.num = 20}
+#define CLU_21 (CLUREF){.num = 21}
+#define CLU_22 (CLUREF){.num = 22}
+#define CLU_23 (CLUREF){.num = 23}
+#define CLU_24 (CLUREF){.num = 24}
+#define CLU_25 (CLUREF){.num = 25}
+#define CLU_26 (CLUREF){.num = 26}
+#define CLU_27 (CLUREF){.num = 27}
+#define CLU_28 (CLUREF){.num = 28}
+#define CLU_29 (CLUREF){.num = 29}
+#define CLU_30 (CLUREF){.num = 30}
+#define CLU_31 (CLUREF){.num = 31}
+#define CLU_32 (CLUREF){.num = 32}
+#define CLU_33 (CLUREF){.num = 33}
+#define CLU_34 (CLUREF){.num = 34}
+#define CLU_35 (CLUREF){.num = 35}
+#define CLU_36 (CLUREF){.num = 36}
+#define CLU_37 (CLUREF){.num = 37}
+#define CLU_38 (CLUREF){.num = 38}
+#define CLU_39 (CLUREF){.num = 39}
+#define CLU_40 (CLUREF){.num = 40}
+#define CLU_41 (CLUREF){.num = 41}
+#define CLU_42 (CLUREF){.num = 42}
+#define CLU_43 (CLUREF){.num = 43}
+#define CLU_44 (CLUREF){.num = 44}
+#define CLU_45 (CLUREF){.num = 45}
+#define CLU_46 (CLUREF){.num = 46}
+#define CLU_47 (CLUREF){.num = 47}
+#define CLU_48 (CLUREF){.num = 48}
+#define CLU_49 (CLUREF){.num = 49}
+#define CLU_50 (CLUREF){.num = 50}
 #endif
 
 /*							*/

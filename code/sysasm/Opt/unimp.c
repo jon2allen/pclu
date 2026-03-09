@@ -45,7 +45,7 @@ errcode err;
 	  }
 */
 
-#ifndef LINUX
+#if !defined(LINUX) && !defined(FREEBSD)
 extern int gccount;
 #endif
 errcode _gcOPcount(ans)

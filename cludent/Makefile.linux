@@ -3,7 +3,7 @@
 INCLUDEDIR = $(CLUHOME)/include
 LIBDIR	   = $(CLUHOME)/code
 LIBS       = $(CLUHOME)/lib/lowlev.lib $(CLUHOME)/lib/useful.lib $(CLUHOME)/lib/misc.lib
-CFLAGS     = -m32 -fcommon  -I$(INCLUDEDIR) -c
+CFLAGS     = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration -Wno-incompatible-function-pointer-types  -m32 -std=gnu89 -fcommon  -I$(INCLUDEDIR) -c
 
 CLU	   = ${CLUHOME}/exe/pclu
 LINK	   = ${CLUHOME}/exe/plink

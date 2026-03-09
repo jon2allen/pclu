@@ -31,7 +31,7 @@ errcode _heap_size(ans)
 CLUREF *ans;
 {
 /*	ans->num = (heaphi - heaplo) / 4; */
-#ifdef LINUX
+#if (defined(LINUX) || defined(FREEBSD)) || defined(FREEBSD)
 	ans->num = GC_composite_in_use;
 #else
 	ans->num = composite_in_use;
