@@ -11,6 +11,14 @@ See BUILD_REPORT.md for newer instructions.
 
 This compiles 32 bit on Mondern Linux Mint.  
 
+Jon Allen - March 9, 2027
+
+See FREEBSD_FIXES.md for BSD instructions
+
+See CROSS_PLATORM_REPORT.md for having freebsd and linux in same branch
+
+-- note must use gmake
+-- note only 32bit support
 End fork note:
 
 0 Quick Start
