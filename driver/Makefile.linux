@@ -4,16 +4,16 @@
 
 # Options for compiling the driver
 
-CC     = gcc -m32
-CFLAGS = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -g
+CC     = gcc 
+CFLAGS = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration   -std=gnu89 -fcommon  -g
 
 # Options to compile into the driver
 
 PCLU_CLUHOME         = $(CLUHOME)
 PCLU_CC              = $(CC)
-PCLU_CFLAGS          = -m32 -fcommon -w
-PCLU_CFLAGS_DEBUG    = -m32 -fcommon -w
-PCLU_CFLAGS_OPTIMIZE = -m32 -fcommon -w -O2
+PCLU_CFLAGS          =  -fcommon -w
+PCLU_CFLAGS_DEBUG    =  -fcommon -w
+PCLU_CFLAGS_OPTIMIZE =  -fcommon -w -O2
 
 # Pass options for compiling driver.o
 

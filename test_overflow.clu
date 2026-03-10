@@ -1,0 +1,15 @@
+start_up = proc ()
+    po: stream := stream$primary_output()
+    i: int := 2000000000
+    j: int := i * i
+    stream$putl(po, "2e9 * 2e9 = " || int$unparse(j))
+    
+    % This should signal overflow
+    k: int := 4000000000
+    begin
+        l: int := k * k
+        stream$putl(po, "4e9 * 4e9 = " || int$unparse(l))
+    end except when overflow:
+        stream$putl(po, "4e9 * 4e9 overflowed as expected")
+    end
+end start_up

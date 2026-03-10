@@ -599,13 +599,13 @@ CLUREF wv, wrd, bit, len, *ans;
 int n1, result, mask;
 
 	if (len.num <= 0) signal(ERR_illegal_size);
-	if (len.num > 32) signal(ERR_illegal_size);    /* 32 or 64?*/
-	n1 = wrd.num << 2;
+	if (len.num > 64) signal(ERR_illegal_size);    /* 32 or 64?*/
+	n1 = wrd.num << 3;
 	if (n1 <= 0) signal(ERR_bounds);
 	if (n1 > wv.str->size) signal(ERR_bounds);
 	if (len.num > bit.num) signal(ERR_bounds);
 	result = wv.vec->data[wrd.num - 1];
-	result = result >> (32 - bit.num);             /* 32 or 64? */
+	result = result >> (64 - bit.num);             /* 32 or 64? */
 	mask =  (1 << len.num) - 1;
 	/* printf("before %X %X\n", mask, result); */
 	result = result & mask;
@@ -623,14 +623,14 @@ int new_field;
 int field_mask;
 
 	if (len.num <= 0) signal(ERR_illegal_size);
-	if (len.num > 32) signal(ERR_illegal_size);              /* 32 or 64? */
-	n1 = wrd.num << 2;
+	if (len.num > 64) signal(ERR_illegal_size);              /* 32 or 64? */
+	n1 = wrd.num << 3;
 	if (n1 <= 0) signal(ERR_bounds);
 	if (n1 > wv.str->size) signal(ERR_bounds);
 	if (len.num > bit.num) signal(ERR_bounds);
 	field_mask = (1 << len.num) - 1;
-	new_field = (byte.num & field_mask) << (32 - bit.num);  /* 32 or 64? */
-	field_mask = field_mask << (32 - bit.num);              /* 32 or 64? */
+	new_field = (byte.num & field_mask) << (64 - bit.num);  /* 32 or 64? */
+	field_mask = field_mask << (64 - bit.num);              /* 32 or 64? */
 	slot = wv.vec->data[wrd.num - 1];
 	slot = slot & ~field_mask;
 	slot |= new_field;

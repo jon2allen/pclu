@@ -55,11 +55,11 @@
 #define get_sp get_current_sp
 #define _exit _OPexit
 #define _environ _OPenviron
-#define UNINIT 0xdeadffff
+#define UNINIT 0xdeadffffdeadffffL
 #define MAX_SIG_VALS 	10
-#define intOPleastint	0X80000000
-#define intOPmaxint	0X7FFFFFFF
-#define intOPsqrtmax	46341
+#define intOPleastint 0x8000000000000000L
+#define intOPmaxint 0x7FFFFFFFFFFFFFFFL
+#define intOPsqrtmax 3037000499L
 #define intOPmaxdigits   20
 
 #define UNIT (sizeof(long))

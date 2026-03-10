@@ -28,7 +28,7 @@ do
     if [ $# -ge 1 ]; then shift; fi
 done
 if [ -n "$verbose" ]; then
-    echo gcc -m32 -fcommon $syms -o $output $files -L$CLUHOME/code $lflag -lm  -lgc -lpthread -Wl,--allow-multiple-definition
+    echo gcc  -fcommon $syms -o $output $files -L$CLUHOME/code $lflag -lm  -lgc -lpthread -Wl,--allow-multiple-definition
 fi
-gcc -m32 -fcommon $syms -o $output $files -L$CLUHOME/code $lflag -lm -lgc -lpthread -Wl,--allow-multiple-definition
+gcc  -fcommon $syms -o $output $files -L$CLUHOME/code $lflag -lm -lgc -lpthread -Wl,--allow-multiple-definition
 

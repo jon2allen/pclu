@@ -213,7 +213,7 @@ CLUREF *ret_1;
         {
         CLUREF T_3_1;
         CLUREF T_3_2;
-        if (1 < 1 || (1<<2) > (wv2.str->size)) {
+        if (1 < 1 || (1<<3) > (wv2.str->size)) {
             err = ERR_bounds;
             goto ex_1;}
         T_3_1.num = wv2.vec->data[1 - 1];
@@ -225,7 +225,7 @@ CLUREF *ret_1;
             {
             CLUREF T_4_1;
             CLUREF T_4_2;
-            if (2 < 1 || (2<<2) > (wv2.str->size)) {
+            if (2 < 1 || (2<<3) > (wv2.str->size)) {
                 err = ERR_bounds;
                 goto ex_1;}
             T_4_1.num = wv2.vec->data[2 - 1];
@@ -241,7 +241,7 @@ CLUREF *ret_1;
         CLUREF T_3_1;
         CLUREF T_3_2;
         CLUREF T_3_3;
-        if (1 < 1 || (1<<2) > (wv2.str->size)) {
+        if (1 < 1 || (1<<3) > (wv2.str->size)) {
             err = ERR_bounds;
             goto ex_1;}
         T_3_1.num = wv2.vec->data[1 - 1];
@@ -261,7 +261,7 @@ CLUREF *ret_1;
         CLUREF T_3_1;
         CLUREF T_3_2;
         CLUREF T_3_3;
-        if (2 < 1 || (2<<2) > (wv2.str->size)) {
+        if (2 < 1 || (2<<3) > (wv2.str->size)) {
             err = ERR_bounds;
             goto ex_1;}
         T_3_1.num = wv2.vec->data[2 - 1];
@@ -1090,9 +1090,9 @@ CLUREF o;
     {
     CLUREF T_1_1;
     CLUREF T_1_2;
-    T_1_1.num = size.num + 4;
-     if ((T_1_1.num > 0 && size.num < 0 && 4 < 0) || 
-         (T_1_1.num < 0 && size.num > 0 && 4 > 0)) {
+    T_1_1.num = size.num + 8;
+     if ((T_1_1.num > 0 && size.num < 0 && 8 < 0) || 
+         (T_1_1.num < 0 && size.num > 0 && 8 > 0)) {
         err = ERR_overflow;
         goto ex_0;}
     err = intOPdiv(T_1_1, CLU_4, &T_1_2);
@@ -1966,7 +1966,7 @@ CLUREF *ret_1;
   LINE(323);
     {
         {CLUREF T_1_1;
-        if (gcbOPlook_index.num < 1 || (gcbOPlook_index.num<<2) > (gcbOPlookahead.str->size)) {
+        if (gcbOPlook_index.num < 1 || (gcbOPlook_index.num<<3) > (gcbOPlookahead.str->size)) {
             err = ERR_bounds;
             goto ex_0;}
         T_1_1.num = gcbOPlookahead.vec->data[gcbOPlook_index.num - 1];
@@ -1977,7 +1977,7 @@ CLUREF *ret_1;
   LINE(324);
     {
     CLUREF T_1_1;
-    T_1_1.num = gcbOPlook_count.num - 4;
+    T_1_1.num = gcbOPlook_count.num - 8;
      if ((T_1_1.num >= 0 && gcbOPlook_count.num < 0 && (-4) < 0) || 
          (T_1_1.num <= 0 && gcbOPlook_count.num > 0 && (-4) > 0)) {
         err = ERR_overflow;
@@ -1999,9 +1999,9 @@ CLUREF *ret_1;
   LINE(326);
     {
     CLUREF T_1_1;
-    T_1_1.num = gcbOPobj_addr.num + 4;
-     if ((T_1_1.num > 0 && gcbOPobj_addr.num < 0 && 4 < 0) || 
-         (T_1_1.num < 0 && gcbOPobj_addr.num > 0 && 4 > 0)) {
+    T_1_1.num = gcbOPobj_addr.num + 8;
+     if ((T_1_1.num > 0 && gcbOPobj_addr.num < 0 && 8 < 0) || 
+         (T_1_1.num < 0 && gcbOPobj_addr.num > 0 && 8 > 0)) {
         err = ERR_overflow;
         goto ex_0;}
     gcbOPobj_addr.num = T_1_1.num;
@@ -2067,9 +2067,9 @@ CLUREF b;
         CLUREF T_1_2;
         CLUREF T_1_3;
         CLUREF T_1_4;
-        T_1_1.num = data_count.num + 4;
-         if ((T_1_1.num > 0 && data_count.num < 0 && 4 < 0) || 
-             (T_1_1.num < 0 && data_count.num > 0 && 4 > 0)) {
+        T_1_1.num = data_count.num + 8;
+         if ((T_1_1.num > 0 && data_count.num < 0 && 8 < 0) || 
+             (T_1_1.num < 0 && data_count.num > 0 && 8 > 0)) {
             err = ERR_overflow;
             goto ex_0;}
         err = intOPdiv(T_1_1, CLU_4, &T_1_2);

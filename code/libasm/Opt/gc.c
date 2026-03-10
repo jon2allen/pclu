@@ -35,6 +35,6 @@ int old_heaplo;
 	fprintf(stderr, "gc$gc returning wrong value\n");
 	old_heaplo = heaplo;
 	_gcOPgc();
-	ans->num = (heaplo - old_heaplo) / 4;
+	ans->num = (heaplo - old_heaplo) / 8;
 	signal(ERR_ok);
 	}

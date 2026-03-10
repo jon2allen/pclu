@@ -1,1 +1,1 @@
-cc -m32 -fcommon -std=gnu89 -I~CLU/include -I~CLU/code/gc-7.2/include -w -Wno-error=int-conversion -Wno-int-conversion -Wno-error=incompatible-pointer-types -Wno-incompatible-pointer-types -c -O2
+cc  -fcommon -std=gnu89 -I~CLU/include -I~CLU/code/gc-7.2/include -w -Wno-error=int-conversion -Wno-int-conversion -Wno-error=incompatible-pointer-types -Wno-incompatible-pointer-types -c -O2

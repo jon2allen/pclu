@@ -6,8 +6,8 @@ CLU     = ../exe/pclu
 LIBS    = ~CLU/lib/lowlev ~CLU/lib/useful ~CLU/lib/misc
 PJCL    = ~CLU/cmpclu/pjcl
 
-CFLAGS  = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -I${CLUHOME}/code/include -w -O
-L1FLAGS = -m32  -L$(CLUHOME)/code -O
+CFLAGS  = -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration   -std=gnu89 -fcommon  -I${CLUHOME}/code/include -w -O
+L1FLAGS =   -L$(CLUHOME)/code -O
 L2FLAGS = -lpclu -lgc -lc -lm
 
 RM      = /bin/rm -f

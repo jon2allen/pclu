@@ -1,0 +1,5 @@
+start_up = proc ()
+    po: stream := stream$primary_output()
+    stream$putl(po, "Max int is: " || int$unparse(int$maxint()))
+    stream$putl(po, "Min int is: " || int$unparse(int$leastint()))
+end start_up

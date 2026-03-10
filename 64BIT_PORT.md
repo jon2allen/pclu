@@ -5,13 +5,15 @@ This document tracks the progress of porting PCLU from it's legacy 32-bit (ILP32
 ## 1. Current Progress Summary
 - **Target Architecture**: x86-64 (AMD64)
 - **Status**: Operational (Alpha)
-- **Main Compiler**: `pclu` successfully built as native 64-bit.
+- **Main Compiler**: `pclu` successfully built as native 64-bit and verified to emit 64-bit capable C code.
+- **Linker**: `plink` updated to link 64-bit objects natively.
 - **Runtime**: Native 64-bit linkage against `gc-7.2`.
 
 ## 2. Infrastructure Changes
 ### Build System
 - Removed `-m32` flags and 32-bit library dependencies.
 - Updated `plink` to use native `gcc` 64-bit linkage.
+- `pclu` and `plink` now consistently produce 64-bit ELF executables.
 - Switched to `gmake` for better cross-platform compatibility (FreeBSD/Linux).
 
 ### Garbage Collector (`code/gc-7.2`)
@@ -33,8 +35,9 @@ This document tracks the progress of porting PCLU from it's legacy 32-bit (ILP32
 
 ## 4. Verification Tests
 - [x] **Compiler Self-Help**: `pclu -help` runs without segfault.
-- [x] **Hello World**: `hello.clu` compiles, links, and prints correctly.
+- [x] **Hello World**: `hello.clu` compiles, links, and prints correctly in native 64-bit.
 - [x] **64-bit Arithmetic**: Test `2e9 + 2e9` results in `4000000000` (success).
+- [x] **Large Constants**: Verified `10000000000` (10 billion) works without truncation in `test_const.clu`.
 - [ ] **Complex Objects**: Testing CLU arrays and records with 64-bit pointers.
 - [ ] **GC Stability**: Need to run full stress test of the garbage collector in 64-bit.
 

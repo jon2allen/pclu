@@ -30,7 +30,7 @@ int temp, temp2;
 
 	if (max.num == 0) ans->num = 0;
 	else {
-		temp = _obj.num / 4;
+		temp = _obj.num / 8;
 		temp2 = temp % max.num ;
 		ans->num = temp2;
 		}	
