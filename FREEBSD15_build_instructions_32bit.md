@@ -64,3 +64,40 @@ Printing 1 to 20:
 ...
 20
 ```
+
+## 5. Building PCLU With Itself (Self-Building)
+
+Once the initial PCLU system is built, you can use it to re-build the compiler itself. This process ensures the compiler is capable of compiling its own source code.
+
+### Step 5.1: Set Environment
+Ensure `CLUHOME` is set to the repository root.
+
+```bash
+export CLUHOME=$(pwd)
+```
+
+### Step 5.2: Generate the Compiler Library
+The compiler requires a library file (`cmp.lib`) containing definitions of its internal modules. For a fresh build, this must be generated first.
+
+```bash
+cd cmpclu
+gmake lib
+```
+
+### Step 5.3: Rebuild the Compiler
+Compile the CLU source files into C, then compile and link them into a new `pclu` binary.
+
+```bash
+gmake
+cd ..
+gmake compiler
+```
+
+### Recording the Build
+You can use the `script` command to record the entire self-build process:
+
+```bash
+script clu_test1.txt bash -c "export CLUHOME=$(pwd) && cd cmpclu && gmake lib && gmake && cd .. && gmake compiler"
+```
+
+The resulting `clu_test1.txt` will contain a full log of the commands and their output.

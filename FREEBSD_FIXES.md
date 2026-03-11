@@ -28,5 +28,13 @@ This report documents the specific changes made to allow Portable CLU (PCLU) to 
 - **`oneof.c` Fixing**: Corrected implicit cast and initialization errors in `oneofOPnew` calls by using C99 designated initializers for the `CLUREF` union.
 - **Signal Handler Casting**: Added explicit function pointer casts for the `clu_alarm` handler in `_set_alarm.c` to satisfy strict typing.
 
+## 5. Runtime and Self-Building Fixes
+Specific runtime issues were addressed to enable the compiler to build itself:
+
+- **Error String Handling**: In `eval1.c` and `eval2.c`, replaced direct pointer-to-int assignments (`err_UNIQ.num = elist[0].num`) with the proper runtime helper `_pclu_erstr(err)`. This ensures error messages are correctly resolved from the string table instead of causing memory corruption.
+- **Floating-Point Precision**: Adjusted a real constant in `penv.c` from `1.892883e-308` to `9.999999e-39` to prevent underflow issues on the 32-bit architecture.
+- **Symbol Conflict Resolution**: Renamed the internal record symbol `record_line_stmt_ops` to `record_line_stmt_1_ops` in `syntax.c` to avoid linkage collisions between different generated internal modules.
+- **Prototype Correctness**: Reorganized and added missing `extern` declarations for iterator bodies (`_IB_` functions) in `ce.c`, `xlib.c`, and `top1.c` to satisfy modern compiler scoping requirements and prevent "implicit declaration" errors during the self-build phase.
+
 ---
-**Verified**: The compiler (`pclu`), linker (`plink`), and runtime libraries (`.lib`) are fully operational on FreeBSD.
+**Verified**: The compiler (`pclu`), linker (`plink`), and runtime libraries (`.lib`) are fully operational on FreeBSD, and the compiler has successfully completed a **full self-build loop**.

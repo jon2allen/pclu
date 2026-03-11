@@ -1,0 +1,464 @@
+Script started on Wed Mar 11 14:57:32 2026
+Command: bash -c cd cmpclu && gmake lib && gmake && cd .. && gmake compiler
+/bin/rm -f ./cmp.lib
+../exe/pclu \#xf cmp.xfile \#spec *.spc \#spec *.clu \#spec *.clu \
+	\#dump cmp.lib
+locals false
+optimize time
+externals false
+merge ~CLU/lib/lowlev,~CLU/lib/useful,~CLU/lib/misc
+Merging /home/jon2allen/gittest/pclu_32bit_test/lib/lowlev.lib
+Merging /home/jon2allen/gittest/pclu_32bit_test/lib/useful.lib
+Merging /home/jon2allen/gittest/pclu_32bit_test/lib/misc.lib
+merge cmp
+Merging cmp.lib: No such file or directory
+cfiles
+ccopt 0
+ce syntax,passes,codgen,bin,gen
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.equ
+time = 0.000
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/passes.equ
+time = 0.000
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/codgen.equ
+time = 0.000
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/bin.equ
+time = 0.000
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gen.equ
+time = 0.000
+Undefined          Referencing Modules
+______________________________________________________________________
+
+c_env             
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/passes.equ)
+ce                
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/passes.equ)
+compiler_logit    
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/gen.equ)
+du                
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/passes.equ)
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.equ)
+equate            
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.equ)
+expr              
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/gen.equ)
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.equ)
+g_env             
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/passes.equ)
+idn               
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/passes.equ)
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.equ)
+p_env             
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/passes.equ)
+stmt              
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.equ)
+typespec          
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/gen.equ)
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/passes.equ)
+                   equates(/home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.equ)
+bindir ../code/cmp
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/_bin_id.spc
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/_restore_state.spc
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/_save_state.spc
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pjcl.spc
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/build.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cconst.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cdchan.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cdefn1.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cdefn2.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/ce.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cenv.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cexpr1.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cexpr2.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cmpvar.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/coper.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cspecs.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cstmt1.clu
+time = 0.006
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cstmt2.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/dtchan.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/du.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/eval1.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/eval2.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gconst.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gdbg.clu
+time = 0.003
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gdefn.clu
+time = 0.003
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/genv.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gexpr.clu
+time = 0.006
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/giter.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gopt1.clu
+time = 0.004
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gparm.clu
+time = 0.004
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gstmt.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gtbl.clu
+time = 0.003
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gtypes.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gutil.clu
+time = 0.003
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gvars.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/idn.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/init.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/lineedit.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pconst.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pdefn1.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pdefn2.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/penv.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pexpr.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pjcl.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/plist.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pstmt1.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pstmt2.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pttkn.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/stable.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/tkntab.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/top1.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/top2.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/vcmp.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/xlib.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/build.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cconst.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cdchan.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cdefn1.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cdefn2.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/ce.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cenv.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cexpr1.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cexpr2.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cmpvar.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/coper.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cspecs.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cstmt1.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cstmt2.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/dtchan.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/du.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/eval1.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/eval2.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gconst.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gdbg.clu
+time = 0.003
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gdefn.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/genv.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gexpr.clu
+time = 0.006
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/giter.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gopt1.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gparm.clu
+time = 0.005
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gstmt.clu
+time = 0.004
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gtbl.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gtypes.clu
+time = 0.003
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gutil.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gvars.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/idn.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/init.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/lineedit.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pconst.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pdefn1.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pdefn2.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/penv.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pexpr.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pjcl.clu
+time = 0.002
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/plist.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pstmt1.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pstmt2.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pttkn.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/stable.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/tkntab.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/top1.clu
+time = 0.003
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/top2.clu
+time = 0.001
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/vcmp.clu
+time = 0.000
+Creating DU specs from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/xlib.clu
+time = 0.000
+Dumped to /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cmp.lib
+
+../exe/pclu \#xf cmp.xfile \#opt time \#ccopt 0 \#co *.clu
+locals false
+optimize time
+externals false
+merge ~CLU/lib/lowlev,~CLU/lib/useful,~CLU/lib/misc
+Merging /home/jon2allen/gittest/pclu_32bit_test/lib/lowlev.lib
+Merging /home/jon2allen/gittest/pclu_32bit_test/lib/useful.lib
+Merging /home/jon2allen/gittest/pclu_32bit_test/lib/misc.lib
+merge cmp
+Merging cmp.lib
+cfiles
+ccopt 0
+ce syntax,passes,codgen,bin,gen
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.equ
+time = 0.000
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/passes.equ
+time = 0.000
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/codgen.equ
+time = 0.000
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/bin.equ
+time = 0.000
+Adding to CE from /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gen.equ
+time = 0.000
+bindir ../code/cmp
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/build.clu
+time = 0.008
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cconst.clu
+time = 0.011
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cdchan.clu
+time = 0.006
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cdefn1.clu
+time = 0.009
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cdefn2.clu
+time = 0.010
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/ce.clu
+time = 0.017
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cenv.clu
+time = 0.025
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cexpr1.clu
+time = 0.015
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cexpr2.clu
+time = 0.015
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cmpvar.clu
+time = 0.006
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/coper.clu
+time = 0.009
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cspecs.clu
+time = 0.006
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cstmt1.clu
+time = 0.010
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/cstmt2.clu
+time = 0.015
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/dtchan.clu
+time = 0.010
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/du.clu
+time = 0.003
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/eval1.clu
+time = 0.015
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/eval2.clu
+time = 0.011
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gconst.clu
+time = 0.007
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gdbg.clu
+time = 0.030
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gdefn.clu
+time = 0.044
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/genv.clu
+time = 0.011
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gexpr.clu
+time = 0.067
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/giter.clu
+time = 0.020
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gopt1.clu
+time = 0.037
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gparm.clu
+time = 0.053
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gstmt.clu
+time = 0.034
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gtbl.clu
+time = 0.024
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gtypes.clu
+536:	no own variables initialized?
+time = 0.022
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gutil.clu
+time = 0.020
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/gvars.clu
+time = 0.013
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/idn.clu
+time = 0.001
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/init.clu
+time = 0.001
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/lineedit.clu
+time = 0.017
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pconst.clu
+time = 0.007
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pdefn1.clu
+time = 0.013
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pdefn2.clu
+time = 0.006
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/penv.clu
+time = 0.024
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pexpr.clu
+time = 0.010
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pjcl.clu
+time = 0.006
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/plist.clu
+time = 0.001
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pstmt1.clu
+time = 0.007
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pstmt2.clu
+time = 0.011
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/pttkn.clu
+time = 0.006
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/stable.clu
+time = 0.003
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/syntax.clu
+time = 0.015
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/tkntab.clu
+time = 0.015
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/top1.clu
+time = 0.020
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/top2.clu
+time = 0.015
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/vcmp.clu
+time = 0.002
+Optimizing /home/jon2allen/gittest/pclu_32bit_test/cmpclu/xlib.clu
+time = 0.004
+
+cd ../cmp; make; cd ../../cmpclu
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c build.c -o build.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cconst.c -o cconst.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cdchan.c -o cdchan.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cdefn1.c -o cdefn1.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cdefn2.c -o cdefn2.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c ce.c -o ce.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cenv.c -o cenv.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cexpr1.c -o cexpr1.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cexpr2.c -o cexpr2.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cmpvar.c -o cmpvar.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c coper.c -o coper.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cspecs.c -o cspecs.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cstmt1.c -o cstmt1.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c cstmt2.c -o cstmt2.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c dtchan.c -o dtchan.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c du.c -o du.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c eval1.c -o eval1.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c eval2.c -o eval2.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gconst.c -o gconst.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gdbg.c -o gdbg.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c genv.c -o genv.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c giter.c -o giter.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gparm.c -o gparm.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gdefn.c -o gdefn.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gstmt.c -o gstmt.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gtbl.c -o gtbl.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gexpr.c -o gexpr.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gopt1.c -o gopt1.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gtypes.c -o gtypes.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gutil.c -o gutil.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c gvars.c -o gvars.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c idn.c -o idn.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c init.c -o init.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c lineedit.c -o lineedit.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c pconst.c -o pconst.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c pdefn1.c -o pdefn1.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c pdefn2.c -o pdefn2.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c penv.c -o penv.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c pexpr.c -o pexpr.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c pjcl.c -o pjcl.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c plist.c -o plist.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c pstmt1.c -o pstmt1.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c pstmt2.c -o pstmt2.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c pttkn.c -o pttkn.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c stable.c -o stable.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c syntax.c -o syntax.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c tkntab.c -o tkntab.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c top1.c -o top1.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c top2.c -o top2.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c vcmp.c -o vcmp.o
+gcc  -Wno-error=int-conversion -Wno-int-conversion -Wno-incompatible-pointer-types -Wno-implicit-function-declaration  -m32 -std=gnu89 -fcommon  -c -O -w -I../include -c xlib.c -o xlib.o
+cd ../cmpasm; make
+gcc -o pclu build.o cconst.o cdchan.o cdefn1.o cdefn2.o ce.o cenv.o  cexpr1.o cexpr2.o cmpvar.o coper.o cspecs.o cstmt1.o cstmt2.o  dtchan.o du.o eval1.o eval2.o gconst.o gdbg.o genv.o giter.o gparm.o  gdefn.o gstmt.o gtbl.o gexpr.o gopt1.o gtypes.o gutil.o gvars.o  idn.o init.o lineedit.o pconst.o pdefn1.o pdefn2.o penv.o  pexpr.o pjcl.o plist.o pstmt1.o pstmt2.o pttkn.o  stable.o syntax.o tkntab.o top1.o top2.o  vcmp.o xlib.o  ../cmpasm/_bin_id.o ../cmpasm/_save_state.o  ../cmpasm/_restore_state.o ../cmpasm/version.o -m32  -L/home/jon2allen/gittest/pclu_32bit_test/code -lpclu_opt -lgc -lm -lc -lpthread -g -Wl,--allow-multiple-definition
+echo Building and installing the pclu compiler
+Building and installing the pclu compiler
+echo Assumes that CLUHOME is set properly
+Assumes that CLUHOME is set properly
+cd code/cmp; make
+`pclu' is up to date.
+/bin/mv -f code/cmp/pclu exe/pclu
+
+Command exit status: 0
+Script done on Wed Mar 11 14:57:44 2026
