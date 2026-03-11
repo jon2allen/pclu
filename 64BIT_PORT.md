@@ -4,8 +4,8 @@ This document tracks the progress of porting PCLU from it's legacy 32-bit (ILP32
 
 ## 1. Current Progress Summary
 - **Target Architecture**: x86-64 (AMD64)
-- **Status**: Operational (Alpha)
-- **Main Compiler**: `pclu` successfully built as native 64-bit and verified to emit 64-bit capable C code.
+- **Status**: Operational (Beta)
+- **Main Compiler**: `pclu` successfully built as native 64-bit and verified to emit 64-bit capable C code and binary library formats.
 - **Linker**: `plink` updated to link 64-bit objects natively.
 - **Runtime**: Native 64-bit linkage against `gc-7.2`.
 
@@ -32,19 +32,24 @@ This document tracks the progress of porting PCLU from it's legacy 32-bit (ILP32
 | `gc_read.c` | `+ 4` -> `+ 8` | Binary header and offset scaling for serialized objects. |
 | `gc.c` | `/ 4` -> `/ 8` | Heap usage calculation normalization. |
 | `hash_obj.c`| `/ 4` -> `/ 8` | Address-based hashing alignment. |
+| `gcd.equ` | `4` -> `8`, `8` -> `16` | Adjusted constants `CLUREFSZ` and `GCD_REF_SIZE` for 64-bit serialization. |
+| `gcd_tab.clu` | `4` -> `CLUREFSZ` | Replaced hardcoded word size literals in library dumper/merge logic. |
+| `gc_read.c` / `gcd_tab.c` | Patched C code | Bootstrapping generated C files to use 8-byte logic for headers/offsets. |
 
 ## 4. Verification Tests
 - [x] **Compiler Self-Help**: `pclu -help` runs without segfault.
 - [x] **Hello World**: `hello.clu` compiles, links, and prints correctly in native 64-bit.
 - [x] **64-bit Arithmetic**: Test `2e9 + 2e9` results in `4000000000` (success).
 - [x] **Large Constants**: Verified `10000000000` (10 billion) works without truncation in `test_const.clu`.
+- [x] **Library Merge/Dump**: `misc.lib` and `lowlev.lib` merging works without "bad file format" error.
+- [x] **64-bit Dumper**: Compiler now correctly emits 64-bit aligned binary libraries (`.lib`).
 - [ ] **Complex Objects**: Testing CLU arrays and records with 64-bit pointers.
 - [ ] **GC Stability**: Need to run full stress test of the garbage collector in 64-bit.
 
 ## 5. Known Issues / Remaining Work
 - **Hardcoded Masks**: Some modules (e.g., `random.c`) still use `0x7FFFFFFF` masks which may need expansion or adjustment to match 64-bit integer semantics.
-- **Bit Manipulation**: `_wordvec` has bit-field logic (`get_byte`/`set_byte`) that assumes 32-bit boundaries.
-- **Bootstrap Phase**: The original `pclu` binaries used to bootstrap the system are 32-bit; currently relying on existing 64-bit build artifacts.
+- **Bit Manipulation**: `_wordvec` has bit-field logic (`get_byte`/`set_byte`) assumes 32-bit boundaries.
 
 ---
 *Created: March 10, 2026*
+*Updated: March 11, 2026*
