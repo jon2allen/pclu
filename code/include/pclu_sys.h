@@ -450,6 +450,7 @@ extern CLUREF CLU_5;
 extern CLUREF CLU_6;
 extern CLUREF CLU_7;
 extern CLUREF CLU_8;
+extern CLUREF CLU_16;
 extern CLUREF CLU_9;
 extern CLUREF CLU_10;
 extern CLUREF CLU_11;
@@ -492,6 +493,9 @@ extern CLUREF CLU_47;
 extern CLUREF CLU_48;
 extern CLUREF CLU_49;
 extern CLUREF CLU_50;
+extern CLUREF CLU_64;
+extern CLUREF CLU_8;
+extern CLUREF CLU_16;
 #else
 #define CLU_0 (CLUREF){.num = 0}
 #define CLU_1 (CLUREF){.num = 1}
@@ -502,6 +506,7 @@ extern CLUREF CLU_50;
 #define CLU_6 (CLUREF){.num = 6}
 #define CLU_7 (CLUREF){.num = 7}
 #define CLU_8 (CLUREF){.num = 8}
+#define CLU_16 (CLUREF){.num = 16}
 #define CLU_9 (CLUREF){.num = 9}
 #define CLU_10 (CLUREF){.num = 10}
 #define CLU_11 (CLUREF){.num = 11}
@@ -544,6 +549,9 @@ extern CLUREF CLU_50;
 #define CLU_48 (CLUREF){.num = 48}
 #define CLU_49 (CLUREF){.num = 49}
 #define CLU_50 (CLUREF){.num = 50}
+#define CLU_64 (CLUREF){.num = 64}
+#define CLU_8 (CLUREF){.num = 8}
+#define CLU_16 (CLUREF){.num = 16}
 #endif
 
 /*							*/

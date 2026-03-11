@@ -322,7 +322,7 @@ CLUREF *ret_1;
 
   LINE(68);
         {
-        err = _chanOPputw(ch, buf, CLU_1, CLU_4, CLU_0);
+        err = _chanOPputw(ch, buf, CLU_1, CLU_8, CLU_0);
         if (err != ERR_ok) goto ex_2;
         }
         }
@@ -513,9 +513,9 @@ CLUREF pos;
   LINE(98);
         {
         CLUREF T_3_1;
-        T_3_1.num = pos.num + 4;
-         if ((T_3_1.num > 0 && pos.num < 0 && 4 < 0) || 
-             (T_3_1.num < 0 && pos.num > 0 && 4 > 0)) {
+        T_3_1.num = pos.num + 8;
+         if ((T_3_1.num > 0 && pos.num < 0 && 8 < 0) || 
+             (T_3_1.num < 0 && pos.num > 0 && 8 > 0)) {
             err = ERR_overflow;
             goto ex_2;}
         err = _chanOPset_access(ch, T_3_1);
@@ -524,7 +524,7 @@ CLUREF pos;
 
   LINE(99);
         {
-        err = _chanOPputw(ch, buf, CLU_1, CLU_4, CLU_0);
+        err = _chanOPputw(ch, buf, CLU_1, CLU_8, CLU_0);
         if (err != ERR_ok) goto ex_2;
         }
         }
@@ -1038,7 +1038,7 @@ CLUREF x;
                      (T_4_2.num < 0 && T_4_1.num > 0 && 1 > 0)) {
                     err = ERR_overflow;
                     goto ex_1;}
-                err = intOPmul(CLU_4, T_4_2, &T_4_3);
+                err = intOPmul(CLU_16, T_4_2, &T_4_3);
                 if (err != ERR_ok) goto ex_1;
                 T_4_4.num = inf.num;
                 T_4_5.num = v.num;
@@ -1737,7 +1737,7 @@ CLUREF x;
                 CLUREF T_5_3;
                 CLUREF T_5_4;
                 CLUREF T_5_5;
-                err = intOPmul(CLU_8, z, &T_5_1);
+                err = intOPmul(CLU_16, z, &T_5_1);
                 if (err != ERR_ok) goto ex_6;
                 T_5_2.num = T_5_1.num + 8;
                  if ((T_5_2.num > 0 && T_5_1.num < 0 && 8 < 0) || 
@@ -2284,7 +2284,7 @@ errcode gcd_storeOPstore_id()
 
   LINE(382);
     {
-    gcd_storeOPpos.num = 3;
+    gcd_storeOPpos.num = 2;
     }
     goto end_0;
     ex_0:
@@ -2848,9 +2848,9 @@ CLUREF s;
         {CLUREF T_1_1;
         CLUREF T_1_2;
         CLUREF T_1_3;
-        T_1_1.num = total_bytes.num + 4;
-         if ((T_1_1.num > 0 && total_bytes.num < 0 && 4 < 0) || 
-             (T_1_1.num < 0 && total_bytes.num > 0 && 4 > 0)) {
+        T_1_1.num = total_bytes.num + 8;
+         if ((T_1_1.num > 0 && total_bytes.num < 0 && 8 < 0) || 
+             (T_1_1.num < 0 && total_bytes.num > 0 && 8 > 0)) {
             err = ERR_overflow;
             goto ex_0;}
         T_1_2.num = T_1_1.num - 1;
@@ -2858,7 +2858,7 @@ CLUREF s;
              (T_1_2.num <= 0 && T_1_1.num > 0 && (-1) > 0)) {
             err = ERR_overflow;
             goto ex_0;}
-        err = intOPdiv(T_1_2, CLU_4, &T_1_3);
+        err = intOPdiv(T_1_2, CLU_8, &T_1_3);
         if (err != ERR_ok) goto ex_0;
         rounded_longs.num = T_1_3.num;
         }
@@ -3041,7 +3041,7 @@ errcode gcd_storeOPdone()
          (T_2_1.num <= 0 && gcd_storeOPpos.num > 0 && (-1) > 0)) {
         err = ERR_overflow;
         goto ex_1;}
-    err = intOPmul(CLU_4, T_2_1, &T_2_2);
+    err = intOPmul(CLU_16, T_2_1, &T_2_2);
     if (err != ERR_ok) goto ex_1;
     err = _chanOPputw(gcd_storeOPch, gcd_storeOPbuf, CLU_1, T_2_2, CLU_0);
     if (err != ERR_ok) goto ex_1;
@@ -3096,7 +3096,7 @@ CLUREF *ret_1;
          (T_1_2.num <= 0 && T_1_1.num > 0 && (-1) > 0)) {
         err = ERR_overflow;
         goto ex_0;}
-    err = intOPmul(CLU_4, T_1_2, &T_1_3);
+    err = intOPmul(CLU_16, T_1_2, &T_1_3);
     if (err != ERR_ok) goto ex_0;
     T_1_4.num = 4096;
     T_1_5.num = (T_1_3.num <= T_1_4.num)? true : false;
