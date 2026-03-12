@@ -69,3 +69,17 @@ The runtime channel implementation (`_chan.c`) was found to have multiple hardco
 - Replaced hardcoded `1` and word-based counts in `_chan.c` with `sizeof(CLUREF)` (8 bytes).
 - Rebuilt `libpclu_opt.a`, relinked `pclu`, and regenerated all `.lib` files.
 - Verified that `cludent` now compiles and runs correctly.
+
+## 7. Status Update (March 12, 2026)
+
+### **Clean Build and Verification**
+A full system rebuild was performed starting from `gmake veryclean`.
+
+**Results:**
+- **Garbage Collector**: Successfully rebuilt in 64-bit mode. Passed all internal `gctest` consistency checks on the LP64 architecture.
+- **Compiler**: `pclu` was successfully rebuilt and verified as a native 64-bit ELF binary.
+- **Runtime Execution**: Verified compiler output with a 64-bit "Hello World" (`hello.clu`), which compiled, linked, and executed without issues.
+- **Regression**: The `cludent` build encountered a `bad file format` error during the high-level library merging phase (`gmake cludent`). This indicates that while individual object compilation works, the complex logic for merging multiple `.lib` files into a single context still contains 64-bit alignment or offset edge cases that were thought to be resolved on March 11.
+
+**Next Steps:**
+- Investigate the `bad file format` regression in `merge` logic specifically for multi-library scenarios.
