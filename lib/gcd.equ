@@ -5,8 +5,8 @@
     GCD_REF   = 33
     GCD_FILL  = 47
 
-    CLUREFSZ = 4
-    GCD_REF_SIZE = 8
+    CLUREFSZ = 8
+    GCD_REF_SIZE = 16
 
     pagesz  = 1024
     pagesz2 = pagesz - 2

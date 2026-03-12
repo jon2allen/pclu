@@ -717,7 +717,7 @@ CLUREF temp_oneof, sz;
         err = oneofOPnew(CLU_1, CLU_0, &temp_oneof);
         if (err != ERR_ok) resignal(err);
 /*                    8 for type + size, 1 for trailing 0, +7 &~7 to round up */
-	sz.num = 8 + (w.str->size+1 + 7)&~7;
+	sz.num = 2*CLUREFSZ + (w.str->size + CLUREFSZ) & ~(CLUREFSZ - 1);
         err = gcd_tabOPinsert(tab, sz, temp_oneof, w, ans);
 	if (err != ERR_ok) resignal(err);
 	signal(ERR_ok);

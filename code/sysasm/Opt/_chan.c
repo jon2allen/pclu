@@ -743,7 +743,7 @@ _chan *ch = (_chan *)chref.ref;
 			elist[0] = _unix_erstr(errno);
 			signal(ERR_not_possible);
 			}
-		if (result != 1) {
+		if (result != sizeof(CLUREF)) {
 			elist[0].str = unknown_error_STRING;
 			signal(ERR_not_possible);
 			}
@@ -776,13 +776,13 @@ _chan *ch = (_chan *)chref.ref;
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
 	for (;;) {
-		result = write(ch->wr.num, &i.num, 1);
+		result = write(ch->wr.num, &i.num, sizeof(CLUREF));
 		if (result == -1 && errno == EINTR) continue;
 		if (result < 0) {
 			elist[0] = _unix_erstr(errno);
 			signal(ERR_not_possible);
 			}
-		if (result != 1) {
+		if (result != sizeof(CLUREF)) {
 			elist[0].str = unknown_error_STRING;
 			signal(ERR_not_possible);
 			}
@@ -858,7 +858,7 @@ _chan *ch = (_chan *)chref.ref;
 #if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
-	size = top - low.num + 1;
+	size = (top - low.num + 1) * sizeof(CLUREF);
 	if (size <= 0) signal(ERR_ok);
 	for (;;) {
 		result = write(ch->wr.num, &bv.str->data[low.num-1], size);
@@ -904,7 +904,7 @@ _chan *ch = (_chan *)chref.ref;
 #if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
-	size = top - low.num + 1;
+	size = (top - low.num + 1) * sizeof(CLUREF);
 	if (size <= 0) signal(ERR_ok);
 	for (;;) {
 		result = write(ch->wr.num, &wv.vec->data[low.num-1], size);
@@ -1228,7 +1228,7 @@ _chan *ch  = (_chan *)chref.ref;
 		signal(ERR_not_possible);
 		}
 	while (1) {
-		result = read(ch->rd.num, &temp, 1);
+		result = read(ch->rd.num, &temp, sizeof(CLUREF));
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);
@@ -1236,7 +1236,7 @@ _chan *ch  = (_chan *)chref.ref;
 		}
 	if (result == 0) signal(ERR_end_of_file);
 
-	/* temp &= 0xff; */
+	/*  */
 	/* check for no echo */
 	if (ch->typ.num != 0 || image.tf == true) {
 		/* printf("no echo %d %d %x\n", ch->typ.num, image.tf, temp); */
@@ -1303,7 +1303,7 @@ _chan *ch  = (_chan *)chref.ref;
 		signal(ERR_not_possible);
 		}
 	while (1) {
-		result = read(ch->rd.num, &temp, 1);
+		result = read(ch->rd.num, &temp, sizeof(CLUREF));
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);
@@ -1311,7 +1311,7 @@ _chan *ch  = (_chan *)chref.ref;
 		}
 	if (result == 0) signal(ERR_end_of_file);
 
-	temp &= 0xff;
+	
 	/* check for no echo */
 	if (ch->typ.num != 0 || image.tf == true) {
 		ans->num = temp;

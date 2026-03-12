@@ -33,11 +33,7 @@ typedef struct {
 extern errcode intOPequal();
 extern errcode _cvt();
 extern errcode boolOPnot();
-extern errcode equal();
-extern errcode similar();
-extern errcode copy();
 extern errcode intOP_gcd();
-extern errcode _gcd();
 CLUREF STR_Bad_040value_040for_040maybe_044make_056;
 
 OWN_ptr maybe_own_init; /* dummy */

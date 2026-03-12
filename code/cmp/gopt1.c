@@ -4,6 +4,7 @@
 #include "pclu_err.h"
 #include "pclu_sys.h"
 
+
 extern errcode exprOPget_abs();
 extern errcode intOPequal();
 extern errcode sequenceOPsize();
@@ -3036,7 +3037,7 @@ CLUREF STR__056array_055_076ext_137low_135_040_075_040;
 CLUREF STR__137wordvec;
 CLUREF STR_fetch;
 CLUREF STR__040_074_0401_040_174_174_040_050;
-CLUREF STR__074_0742_051_040_076_040_050;
+CLUREF STR__074_0743_051_040_076_040_050;
 CLUREF STR__056str_055_076size_051_051_040_173;
 CLUREF STR__040_055_0401_135_073;
 CLUREF STR__056vec;
@@ -3180,7 +3181,7 @@ CLUREF *ret_1;
         stringOPcons("_wordvec", CLU_1, CLU_8, &STR__137wordvec);
         stringOPcons("fetch", CLU_1, CLU_5, &STR_fetch);
         stringOPcons(" < 1 || (", CLU_1, CLU_9, &STR__040_074_0401_040_174_174_040_050);
-        stringOPcons("<<2) > (", CLU_1, CLU_8, &STR__074_0742_051_040_076_040_050);
+        stringOPcons("<<3) > (", CLU_1, CLU_8, &STR__074_0743_051_040_076_040_050);
         stringOPcons(".str->size)) {", CLU_1, CLU_14, &STR__056str_055_076size_051_051_040_173);
         stringOPcons(".vec->data[", CLU_1, CLU_11, &STR__056vec_055_076data_133);
         stringOPcons(" - 1];", CLU_1, CLU_6, &STR__040_055_0401_135_073);
@@ -6144,7 +6145,7 @@ CLUREF *ret_1;
 
   LINE(867);
         {
-        err = g_envOPputs(e, STR__074_0742_051_040_076_040_050);
+        err = g_envOPputs(e, STR__074_0743_051_040_076_040_050);
         if (err != ERR_ok) goto ex_0;
         }
 

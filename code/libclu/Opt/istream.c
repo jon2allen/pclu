@@ -1203,7 +1203,7 @@ CLUREF *ret_1;
                 CLUREF T_4_3;
                 T_4_1.num = rb.vec->data[3];
                 T_4_2.num = rb.vec->data[1];
-                if (T_4_2.num < 1 || (T_4_2.num<<2) > (T_4_1.str->size)) {
+                if (T_4_2.num < 1 || (T_4_2.num<<3) > (T_4_1.str->size)) {
                     err = ERR_bounds;
                     goto ex_2;}
                 T_4_3.num = T_4_1.vec->data[T_4_2.num - 1];
@@ -1458,7 +1458,7 @@ CLUREF *ret_1;
                 CLUREF T_4_3;
                 T_4_1.num = rb.vec->data[3];
                 T_4_2.num = rb.vec->data[1];
-                if (T_4_2.num < 1 || (T_4_2.num<<2) > (T_4_1.str->size)) {
+                if (T_4_2.num < 1 || (T_4_2.num<<3) > (T_4_1.str->size)) {
                     err = ERR_bounds;
                     goto ex_2;}
                 T_4_3.num = T_4_1.vec->data[T_4_2.num - 1];

@@ -316,7 +316,7 @@ CLUREF *ret_1;
 
   LINE(67);
         {
-        err = _chanOPset_access(ch, CLU_4);
+        err = _chanOPset_access(ch, CLU_8);
         if (err != ERR_ok) goto ex_2;
         }
 
@@ -1038,7 +1038,7 @@ CLUREF x;
                      (T_4_2.num < 0 && T_4_1.num > 0 && 1 > 0)) {
                     err = ERR_overflow;
                     goto ex_1;}
-                err = intOPmul(CLU_16, T_4_2, &T_4_3);
+                err = intOPmul(CLU_8, T_4_2, &T_4_3);
                 if (err != ERR_ok) goto ex_1;
                 T_4_4.num = inf.num;
                 T_4_5.num = v.num;
@@ -1739,9 +1739,9 @@ CLUREF x;
                 CLUREF T_5_5;
                 err = intOPmul(CLU_16, z, &T_5_1);
                 if (err != ERR_ok) goto ex_6;
-                T_5_2.num = T_5_1.num + 8;
-                 if ((T_5_2.num > 0 && T_5_1.num < 0 && 8 < 0) || 
-                     (T_5_2.num < 0 && T_5_1.num > 0 && 8 > 0)) {
+                T_5_2.num = T_5_1.num + 16;
+                 if ((T_5_2.num > 0 && T_5_1.num < 0 && 16 < 0) || 
+                     (T_5_2.num < 0 && T_5_1.num > 0 && 16 > 0)) {
                     err = ERR_overflow;
                     goto ex_6;}
                 T_5_3.num = inf.num;
@@ -2284,7 +2284,7 @@ errcode gcd_storeOPstore_id()
 
   LINE(382);
     {
-    gcd_storeOPpos.num = 2;
+    gcd_storeOPpos.num = 3;
     }
     goto end_0;
     ex_0:
@@ -2623,7 +2623,9 @@ CLUREF a;
 
   LINE(438);
     {
-    err = _wordvecOPstore(gcd_storeOPbuf, gcd_storeOPpos, CLU_32);
+    CLUREF T_1_1;
+    T_1_1.num = 64;
+    err = _wordvecOPstore(gcd_storeOPbuf, gcd_storeOPpos, T_1_1);
     if (err != ERR_ok) goto ex_0;
     }
 
@@ -2905,7 +2907,7 @@ CLUREF s;
         {
             {CLUREF T_3_1;
             CLUREF T_3_2;
-            err = intOPmul(avail, CLU_4, &T_3_1);
+            err = intOPmul(avail, CLU_8, &T_3_1);
             if (err != ERR_ok) goto ex_1;
             err = intOPmin(bytes_to_go, T_3_1, &T_3_2);
             if (err != ERR_ok) goto ex_1;
@@ -2917,11 +2919,11 @@ CLUREF s;
         {
         CLUREF T_3_1;
         CLUREF T_3_2;
-        err = intOPmul(gcd_storeOPpos, CLU_4, &T_3_1);
+        err = intOPmul(gcd_storeOPpos, CLU_8, &T_3_1);
         if (err != ERR_ok) goto ex_1;
-        T_3_2.num = T_3_1.num - 3;
-         if ((T_3_2.num >= 0 && T_3_1.num < 0 && (-3) < 0) || 
-             (T_3_2.num <= 0 && T_3_1.num > 0 && (-3) > 0)) {
+        T_3_2.num = T_3_1.num - 7;
+         if ((T_3_2.num >= 0 && T_3_1.num < 0 && (-7) < 0) || 
+             (T_3_2.num <= 0 && T_3_1.num > 0 && (-7) > 0)) {
             err = ERR_overflow;
             goto ex_1;}
         err = _wordvecOPmove_b2w(s, i, gcd_storeOPbuf, T_3_2, copy_count);
@@ -2932,7 +2934,7 @@ CLUREF s;
         {
         CLUREF T_3_1;
         CLUREF T_3_2;
-        err = intOPmul(avail, CLU_4, &T_3_1);
+        err = intOPmul(avail, CLU_8, &T_3_1);
         if (err != ERR_ok) goto ex_1;
         T_3_2.num = i.num + T_3_1.num;
          if ((T_3_2.num > 0 && i.num < 0 && T_3_1.num < 0) || 
@@ -3041,7 +3043,7 @@ errcode gcd_storeOPdone()
          (T_2_1.num <= 0 && gcd_storeOPpos.num > 0 && (-1) > 0)) {
         err = ERR_overflow;
         goto ex_1;}
-    err = intOPmul(CLU_16, T_2_1, &T_2_2);
+    err = intOPmul(CLU_8, T_2_1, &T_2_2);
     if (err != ERR_ok) goto ex_1;
     err = _chanOPputw(gcd_storeOPch, gcd_storeOPbuf, CLU_1, T_2_2, CLU_0);
     if (err != ERR_ok) goto ex_1;
@@ -3096,9 +3098,9 @@ CLUREF *ret_1;
          (T_1_2.num <= 0 && T_1_1.num > 0 && (-1) > 0)) {
         err = ERR_overflow;
         goto ex_0;}
-    err = intOPmul(CLU_16, T_1_2, &T_1_3);
+    err = intOPmul(CLU_8, T_1_2, &T_1_3);
     if (err != ERR_ok) goto ex_0;
-    T_1_4.num = 4096;
+    T_1_4.num = 8192;
     T_1_5.num = (T_1_3.num <= T_1_4.num)? true : false;
     if (T_1_5.num == true) {
         {
@@ -3118,7 +3120,7 @@ CLUREF *ret_1;
   LINE(507);
         {
         CLUREF T_3_1;
-        T_3_1.num = 4096;
+        T_3_1.num = 8192;
         err = _chanOPputw(gcd_storeOPch, gcd_storeOPbuf, CLU_1, T_3_1, CLU_0);
         if (err != ERR_ok) goto ex_1;
         }
@@ -3175,7 +3177,7 @@ CLUREF *ret_1;
   LINE(514);
         {
         CLUREF T_3_1;
-        T_3_1.num = 4096;
+        T_3_1.num = 8192;
         err = _chanOPputw(gcd_storeOPch, gcd_storeOPbuf, CLU_1, T_3_1, CLU_0);
         if (err != ERR_ok) goto ex_2;
         }

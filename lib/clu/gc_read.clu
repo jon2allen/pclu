@@ -125,7 +125,7 @@ gcr = cluster is pass1, pass2
 		       o := make_adv1(ch)
 		       end
 	     else
-		  signal not_possible("bad file format")
+		  signal not_possible("bad hdr in pass1: " || int$unparse(hdr))
 	     end
 	    gco$save_new_obj(id, o)
 	    end
@@ -193,7 +193,7 @@ gcr = cluster is pass1, pass2
 	       then
 		    make_adv2(ch, o)
 	     else
-		  signal not_possible("bad file format")
+		  signal not_possible("bad hdr in pass2: " || int$unparse(hdr))
 	     end
 	    end
 
@@ -201,7 +201,7 @@ gcr = cluster is pass1, pass2
 
     make_bvec2 = proc(ch:_chan, o:_obj)
 	size: int := gcb$get_size(ch)
-	gcb$skip(ch, ((size+CLUREFSZ)/CLUREFSZ))
+	gcb$skip(ch, ((size + CLUREFSZ)/CLUREFSZ))
 	end make_bvec2
 
     make_vec2 = proc(ch:_chan, o:_obj)

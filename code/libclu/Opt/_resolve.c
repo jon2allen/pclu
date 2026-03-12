@@ -1028,9 +1028,9 @@ CLUREF *ret_2;
         CLUREF T_2_2;
         err = _resolveOPnskip(idx, &T_2_1);
         if (err != ERR_ok) goto ex_0;
-        T_2_2.num = T_2_1.num + 8;
-         if ((T_2_2.num > 0 && T_2_1.num < 0 && 8 < 0) || 
-             (T_2_2.num < 0 && T_2_1.num > 0 && 8 > 0)) {
+        T_2_2.num = T_2_1.num + 4;
+         if ((T_2_2.num > 0 && T_2_1.num < 0 && 4 < 0) || 
+             (T_2_2.num < 0 && T_2_1.num > 0 && 4 > 0)) {
             err = ERR_overflow;
             goto ex_0;}
         idx.num = T_2_2.num;
