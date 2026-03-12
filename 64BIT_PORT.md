@@ -49,7 +49,7 @@ This document tracks the progress of porting PCLU from it's legacy 32-bit (ILP32
 
 ## 5. Known Issues / Remaining Work
 - **Hardcoded Masks**: Some modules (e.g., `random.c`) still use `0x7FFFFFFF` masks which may need expansion or adjustment to match 64-bit integer semantics.
-- **Bit Manipulation**: `_wordvec` has bit-field logic (`get_byte`/`set_byte`) assumes 32-bit boundaries.
+- [x] **Bit Manipulation**: `_wordvec` bit-field logic (`get_byte`/`set_byte`) was updated to 64-bit boundaries (Resolved Mar 12).
 
 ---
 *Created: March 10, 2026*
@@ -57,7 +57,7 @@ This document tracks the progress of porting PCLU from it's legacy 32-bit (ILP32
 
 ## 6. Major Blockers Resolved (March 11, 2026)
 
-### **The `negative_size` \& "Word Size 0" Library Crash**
+### **The `negative_size` & "Word Size 0" Library Crash**
 During the build of `cludent` and `cmp.lib`, the compiler would crash with `failure: negative_size` or report `bad file format` despite headers appearing correct.
 
 **Resolution:**
@@ -83,3 +83,23 @@ A full system rebuild was performed starting from `gmake veryclean`.
 
 **Next Steps:**
 - Investigate the `bad file format` regression in `merge` logic specifically for multi-library scenarios.
+
+## 8. 2nd Update (March 12, 2026)
+
+### **_wordvec 64-bit Debugging and Fixes**
+The `_wordvec` module was identified as a critical failure point for bit-level manipulation on 64-bit words.
+
+**Key Changes:**
+- **`_wordvec.c` Reconstruction**: The module was patched to use explicit 64-bit logic. Bit-field boundaries in `get_byte` and `set_byte` now correctly shift based on a 64-bit word size ($64 - bit\_position$).
+- **Type Safety**: Enforced `unsigned long` and `UL` suffixes for all bitwise operations to prevent unintended sign extension or 32-bit truncation during shifts.
+- **Prototypes**: Added full C prototypes for all `_wordvec` operations to the `.c` file to catch type mismatches at compile time.
+- **Word Size Constants**: Verified and updated `byte_size` (8), `word_size` (64), and `bytes_per_word` (8) to match the LP64 architecture.
+
+### **Creation of stress_test_64bit.clu**
+A new dedicated stress test program, `stress_test_64bit.clu`, was created to verify core 64-bit assumptions:
+- **Large Integers**: Verified correctly handling values exceeding 31 bits (e.g., 3 billion, 1 trillion).
+- **Overflow Detection**: Verified that PCLU's `overflow` exception still triggers correctly for 64-bit signed integers.
+- **Wordvec Precision**: Verified that `_wordvec$get_byte` and `_wordvec$set_byte` can precisely target and modify bit ranges within a 64-bit integer (e.g., targeting bits 33-48 for hex constants like `0xABCD`).
+
+**Status**:
+All tests in `stress_test_64bit.clu` passed successfully. The `_wordvec` module is now considered 64-bit compliant for bit-level operations.

@@ -1,0 +1,77 @@
+test_arithmetic = proc (po: stream)
+    three_billion: int := 3000000000
+    huge: int := 1152921504606846976
+    a: int := 2000000000
+    b: int := 2000000000
+    sum: int := a + b
+    c: int := 1000000
+    prod: int := c * c
+    stream$putl(po, "[1] Arithmetic")
+    stream$putl(po, "  3 bil:   " || int$unparse(three_billion))
+    stream$putl(po, "  2^60:    " || int$unparse(huge))
+    stream$putl(po, "  2e9+2e9: " || int$unparse(sum))
+    stream$putl(po, "  1e6*1e6: " || int$unparse(prod))
+end test_arithmetic
+
+test_overflows = proc (po: stream)
+    maxint: int := 9223372036854775807
+    stream$putl(po, "[2] Overflows")
+    one: int := 1
+    res: int := maxint + one
+    except when overflow:
+        stream$putl(po, "  SUCCESS: overflow caught")
+    end
+end test_overflows
+
+test_arrays = proc (po: stream)
+    stream$putl(po, "[3] Arrays")
+    a: array[int] := array[int]$predict(1, 10)
+    for i: int in int$from_to(1, 10) do array[int]$addh(a, i*8) end
+    if a[5] = 40 then stream$putl(po, "  SUCCESS") else stream$putl(po, "  FAILED") end
+end test_arrays
+
+test_wordvec = proc (po: stream)
+    stream$putl(po, "[4] Wordvec")
+    bpw: int := _wordvec$bytes_per_word()
+    stream$putl(po, "  BPW: " || int$unparse(bpw))
+    wv: _wordvec := _wordvec$create(2)
+    
+    % Use 0x1122334455667788
+    val64: int := 1234605616436508552
+    _wordvec$store(wv, 1, val64)
+    read64: int := _wordvec$fetch(wv, 1)
+    stream$putl(po, "  read: " || int$unparse(read64))
+    
+    % bit 1 is MSB. hex 1122 3344 5566 7788
+    % bit 33-48 should be 0x5566 (21862)
+    bv: int := _wordvec$get_byte(wv, 1, 48, 16)
+    expected: int := 21862
+    if bv = expected then
+        stream$putl(po, "  SUCCESS: get_byte bits 33-48 = " || int$unparse(bv))
+    else
+        stream$putl(po, "  FAILED: get_byte bits 33-48 = " || int$unparse(bv) || ", expect " || int$unparse(expected))
+    end
+    
+    % Test set_byte
+    % Set bits 33-48 to 0xABCD (43981)
+    _wordvec$set_byte(wv, 43981, 1, 48, 16)
+    new_val: int := _wordvec$fetch(wv, 1)
+    % Should result in 0x11223344ABCD7788
+    % Decimal: 1234605617886099336
+    expected_val: int := 1234605617886099336
+    if new_val = expected_val then
+        stream$putl(po, "  SUCCESS: set_byte updated word to " || int$unparse(new_val))
+    else
+        stream$putl(po, "  FAILED: set_byte, got " || int$unparse(new_val) || ", expect " || int$unparse(expected_val))
+    end
+end test_wordvec
+
+start_up = proc ()
+    po: stream := stream$primary_output()
+    stream$putl(po, "--- PCLU 64-bit Stress Test ---")
+    test_arithmetic(po)
+    test_overflows(po)
+    test_arrays(po)
+    test_wordvec(po)
+    stream$putl(po, "--- All Tests Completed ---")
+end start_up

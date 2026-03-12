@@ -1,0 +1,5 @@
+
+start_up = proc()
+    po: stream := stream$primary_output()
+    stream$puts(po, "CLUREFSZ = " || int$unparse(CLUREFSZ) || "\n")
+end start_up
