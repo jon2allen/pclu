@@ -50,7 +50,7 @@ errcode _wordvecOPcreate(CLUREF sz, CLUREF *ans)
 
     if (size > MAX_STR) signal(ERR_toobig);
     rounded_size = ((size + 7) / 8) * 8 + sizeof(CLU_string);
-    clu_alloc(rounded_size, &temp);
+    clu_alloc(rounded_size, &temp); bzero(temp.str, rounded_size);
     temp.str->size = size;
     temp.str->typ.val = CT_STRING;
     temp.str->typ.mark = 0;
@@ -66,7 +66,7 @@ errcode _wordvecOPcopy(CLUREF wv1, CLUREF *wv2)
     int i;
     int sz = (int)wv1.str->size;
     int rounded_size = (sz + 7) / 8 * 8 + sizeof(CLU_string);
-    clu_alloc(rounded_size, &temp);
+    clu_alloc(rounded_size, &temp); bzero(temp.str, rounded_size);
     temp.str->size = sz;
     temp.str->typ.val = CT_STRING;
     temp.str->typ.mark = 0;

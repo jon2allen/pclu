@@ -4160,6 +4160,8 @@ errcode *iecode;
             }
             }/* end if */
 
+
+
   LINE(467);
         {
             {CLUREF T_3_1;
@@ -4225,6 +4227,7 @@ errcode *iecode;
         }
         }/* end if */
         goto end_1;
+
         ex_1:
             if ((locals.err == ERR_bad_format)
              || (locals.err == ERR_open_failed)) {

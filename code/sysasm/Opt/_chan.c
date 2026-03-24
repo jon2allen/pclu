@@ -743,7 +743,7 @@ _chan *ch = (_chan *)chref.ref;
 			elist[0] = _unix_erstr(errno);
 			signal(ERR_not_possible);
 			}
-		if (result != sizeof(CLUREF)) {
+		if (result != 1) {
 			elist[0].str = unknown_error_STRING;
 			signal(ERR_not_possible);
 			}
@@ -815,6 +815,23 @@ _chan *ch = (_chan *)chref.ref;
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
 		for (;;) {
+		if (s.str->size > 0 && s.str->size < 10000) {
+			int has_nul = 0;
+			for (long i = 0; i < s.str->size; i++) {
+				if (s.str->data[i] == '\0') has_nul = 1;
+			}
+			if (has_nul) {
+				printf("_chanOPputs (fd %d): string size %ld contains NULs: '", ch->wr.num, s.str->size);
+				for (long i = 0; i < s.str->size; i++) {
+					if (s.str->data[i] == '\0') printf("\\0");
+					else printf("%c", s.str->data[i]);
+				}
+				printf("'\n");
+			}
+		}
+		if (s.str->size > 100000 || s.str->size < 0) {
+			printf("_chanOPputs (fd %d): suspicious size = %ld, typ = %d\n", ch->wr.num, s.str->size, s.str->typ.val);
+		}
 		result = write(ch->wr.num, s.str->data,
 					s.str->size);
 		if (result == -1 && errno == EINTR) continue;
@@ -858,7 +875,7 @@ _chan *ch = (_chan *)chref.ref;
 #if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
-	size = (top - low.num + 1) * sizeof(CLUREF);
+	size = (top - low.num + 1) * 1;
 	if (size <= 0) signal(ERR_ok);
 	for (;;) {
 		result = write(ch->wr.num, &bv.str->data[low.num-1], size);
@@ -895,8 +912,8 @@ _chan *ch = (_chan *)chref.ref;
 		elist[0].str = cannot_write_to_this__chan_STRING;
 		signal(ERR_not_possible);
 		}
-	if (low.num < 1 || low.num >= wv.vec->size) signal(ERR_bounds);
-	top = wv.vec->size;
+	if (low.num < 1 || low.num  >  wv.vec->size * sizeof(CLUREF)) signal(ERR_bounds);
+	top = wv.vec->size * sizeof(CLUREF);
 	if (high.num < top) top = high.num;
 	if (image.tf == true && ch->typ.num == tty) 
 		lit = true;
@@ -904,10 +921,10 @@ _chan *ch = (_chan *)chref.ref;
 #if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
-	size = (top - low.num + 1) * sizeof(CLUREF);
+	size = (top - low.num + 1);
 	if (size <= 0) signal(ERR_ok);
 	for (;;) {
-		result = write(ch->wr.num, &wv.vec->data[low.num-1], size);
+		result = write(ch->wr.num, ((char *)wv.vec->data) + low.num - 1, size);
 		if (result == -1 && errno == EINTR) continue;
 		if (result == -1) {
 			elist[0] = _unix_erstr(errno);
@@ -1228,7 +1245,7 @@ _chan *ch  = (_chan *)chref.ref;
 		signal(ERR_not_possible);
 		}
 	while (1) {
-		result = read(ch->rd.num, &temp, sizeof(CLUREF));
+		result = read(ch->rd.num, &temp, 1);
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);
@@ -1293,7 +1310,7 @@ CLUREF chref, image;
 CLUREF *ans;
 {
 int result;
-int temp;
+long temp;
 int echo_count;
 char echo_buf[10];
 _chan *ch  = (_chan *)chref.ref;
@@ -1303,7 +1320,7 @@ _chan *ch  = (_chan *)chref.ref;
 		signal(ERR_not_possible);
 		}
 	while (1) {
-		result = read(ch->rd.num, &temp, sizeof(CLUREF));
+		result = read(ch->rd.num, &temp, 8);
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);
@@ -1421,7 +1438,7 @@ int result, count;
 _chan *ch  = (_chan *)chref.ref;
 
 	if (strt.num < 1) signal(ERR_bounds);
-	count = bv.str->size-strt.num+1;
+	count = (bv.str->size - strt.num + 1);
 	if (n.num < count) count = n.num;
 	if (count < 0) signal(ERR_bounds);
 	if (ch->rd.num < 0) {
@@ -1430,7 +1447,7 @@ _chan *ch  = (_chan *)chref.ref;
 		}
 	if (bv.str->size == 0) signal(ERR_bounds);
 	while (1) {
-		result = read(ch->rd.num, &bv.str->data[strt.num-1], count);
+	result = read(ch->rd.num, ((char *)bv.str->data) + strt.num - 1, count);
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);

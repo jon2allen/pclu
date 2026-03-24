@@ -286,7 +286,7 @@ CLUREF temp_oneof, temp_oneof_2, sz, fcn;
 	if (err != ERR_ok) resignal(err);
 	err = oneofOPnew(CLU_6, temp_oneof, &temp_oneof_2);
 	if (err != ERR_ok) resignal(err);
-	sz.num = 6*CLUREFSZ + GCD_REF_SIZE;
+	sz.num = CLU_array_sizew*CLUREFSZ + GCD_REF_SIZE;
 	err = gcd_tabOPinsert(tab, sz, temp_oneof_2,
 			adv, ans);
 	if (err != ERR_ok) resignal(err);

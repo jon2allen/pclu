@@ -19,7 +19,7 @@ static char rcsid[] = "$Header: _heap_size.c,v 1.2 91/06/06 13:47:18 dcurtis Exp
 /*		IMPLEMENTATION OF		*/
 /*			_heap_size		*/
 /*						*/
-/*	returns the number of 32-bit units in 	*/
+/*	returns the number of 64-bit units in 	*/
 /*		in the heap			*/
 
 #include "pclu_err.h"

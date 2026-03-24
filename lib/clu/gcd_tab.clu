@@ -426,7 +426,7 @@ gcd_store = cluster is init, store_id, store_lit, store_ref, store_hdr,
 
     store_array_desc = proc(a: advo) signals (not_possible (string))
 	%logit("entering gcd_store$store_array_desc: "  || int$unparse(_advhd) || ", " ||
-	%      int$unparse(6*CLUREFSZ + GCD_REF_SIZE) || int$unparse(a.size) ||
+	%      int$unparse(7*CLUREFSZ + GCD_REF_SIZE) || int$unparse(a.size) ||
 	%      int$unparse(a.low)  || int$unparse(a.start)  || int$unparse(a.predict))
 	need(1)
 	   resignal not_possible
@@ -435,7 +435,7 @@ gcd_store = cluster is init, store_id, store_lit, store_ref, store_hdr,
 
 	need(1)
 	   resignal not_possible
-	buf[pos] := 6*CLUREFSZ + GCD_REF_SIZE % header size
+	buf[pos] := 7*CLUREFSZ + GCD_REF_SIZE % header size
         pos := pos + 1
 
 	need(1)
@@ -494,7 +494,7 @@ gcd_store = cluster is init, store_id, store_lit, store_ref, store_hdr,
 
     done = proc() signals (not_possible (string))
 	%logit("enter/exit gcd_store$store_done")
-	_chan$putw(ch, buf, 1, CLUREFSZ * (pos-1), false)
+	_chan$putw(ch, buf, 1, (pos-1), false)
 	   resignal not_possible
 	end done
 

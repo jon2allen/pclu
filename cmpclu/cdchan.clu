@@ -15,7 +15,7 @@ rep	= record[chan:   _chan,
 		 why:	 str]
 
 pagesz = 2048
-bpagesz = 4 * pagesz
+bpagesz = 8 * pagesz
 
 vc = _vec[char]
 dc = _adv[char]
@@ -48,7 +48,7 @@ open = proc (fn: fname) returns (fname, cvt) signals (not_possible(str))
 write = proc (cc: cvt, base: int, code, eblock: ai) returns (int)
 	count: int := cc.count
 	cc.count := count +
-		    ((ai$size(code) + 7) / 4 + (ai$size(eblock) + 1) / 2) * 4
+		    ((ai$size(code) + 7) / 8 + (ai$size(eblock) + 1) / 2) * 8
 	if cc.index = pagesz
 	   then if ~cc.err
 		   then _chan$putw(cc.chan, cc.page, 1, bpagesz, false)
@@ -72,7 +72,7 @@ boutput = proc (cc: rep, block: ai)
 	i: int := _cvt[ai, dc](block).start
 	z: int := ai$size(block)
 	p: _wordvec := cc.page
-	index: int := cc.index * 4
+	index: int := cc.index * 8
 	while z > 0 do
 		if index = bpagesz
 		   then if ~cc.err
@@ -93,11 +93,11 @@ boutput = proc (cc: rep, block: ai)
 		i := i + len
 		end
 	_event$undefer()
-	while index // 4 ~= 0 do
+	while index // 8 ~= 0 do
 		index := index + 1
 		_wordvec$bstore(p, index, 0)
 		end
-	cc.index := index / 4
+	cc.index := index / 8
 	end boutput
 
 output = proc (cc: rep, block: ai)

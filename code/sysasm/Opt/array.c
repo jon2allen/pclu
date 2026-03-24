@@ -1017,7 +1017,7 @@ array_of_t_TABLE *table = (array_of_t_TABLE*)CUR_PROC_VAR.proc->type_owns->info[
 	if (err != ERR_ok) resignal(err);
 	err = oneofOPnew(CLU_6, temp_oneof_2, &temp_oneof);
 	if (err != ERR_ok) resignal(err);
-	sz.num = 6*CLUREFSZ + GCD_REF_SIZE;
+	sz.num = CLU_array_sizew*CLUREFSZ + GCD_REF_SIZE;
 	err = gcd_tabOPinsert(tab, sz, temp_oneof, a, ans);
 	if (err != ERR_ok) resignal(err);
 	signal(ERR_ok);

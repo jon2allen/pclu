@@ -189,7 +189,7 @@ CLUREF temp_oneof, sz, fcn;
 	fcn.proc = table->_gcd.fcn;
 	err = oneofOPnew(CLU_2, fcn, &temp_oneof);
 	if (err != ERR_ok) resignal(err);
-	sz.num = v.vec->size * GCD_REF_SIZE + 8;
+	sz.num = v.vec->size * GCD_REF_SIZE + 2*CLUREFSZ;
 	err = gcd_tabOPinsert(tab, sz, temp_oneof, v, ans);
 	if (err != ERR_ok) resignal(err);
 	signal(ERR_ok);
