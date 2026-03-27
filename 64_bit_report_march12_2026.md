@@ -1,5 +1,7 @@
 gh-Level Review and Action Plan for PCLU Build Failure on FreeBSD 15
 
+March 11th commit works with gmake building cludent.  commits aftwardsa have issues.
+
 ## High-Level Review of the Issue
 
 The immediate point of failure occurred when running `gmake veryclean` on FreeBSD 15. The top-level build system cascaded the `veryclean` target down into the `code/` subdirectory, which then attempted to call `make veryclean` on `code/gc` (the Boehm Garbage Collector version 7.2). Because Boehm GC uses a standard GNU Autotools build system (`configure`, `Makefile.in`), it supports standard targets like `clean`, `distclean`, and `maintainer-clean`, but not `veryclean`. This caused the make process to halt abruptly with an Error code 2.
