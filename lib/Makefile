@@ -107,8 +107,9 @@ misc.lib: ${MISC_SOURCES} ${MISC_SPECS}
 
 lowlev.lib: ${LOW_SPECS} ${LOW_EQU} ${LOWLIB_SOURCES} ${LOWSYS_SOURCES}
 	$(CLU) \#ext false \#newlib \
-            \#spec ${LOW_SPECS} \#ce ${LOW_EQU} \
-	    \#spec ${LOWLIB_SOURCES} ${LOW_SPECS} ${LOWLIB_SOURCES} \
+            \#ce ${LOW_EQU} \
+	    \#spec ${LOW_SPECS} \
+	    \#spec ${LOWLIB_SOURCES} \
 	    \#spec ${LOWSYS_SOURCES} \
 	    \#forget ${NOT_LOW}	\
 	    \#dump lowlev 
@@ -118,7 +119,7 @@ useful.lib: lowlev.lib ${LOW_EQU} ${USE_SPECS} ${USELIB_SOURCES} \
 	$(CLU) \#ext false \#newlib \
             \#me lowlev.lib \#ce ${LOW_EQU} \
             \#spec ${USE_SPECS} ${USELIB_SOURCES} ${USESYS_SOURCES} \
-	    \#forget ${NOT_USE} \#unmerge lowlev.lib \
+	    \#forget ${NOT_USE} \
 	    \#dump useful 
 
 clean:

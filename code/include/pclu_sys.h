@@ -175,7 +175,7 @@ typedef struct {
 	} CLU_string;
 typedef CLU_string *CLUSTRING;
 
-#define MAX_STR 150000
+#define MAX_STR 1000000000
 #define MIN_CAP_CHAR 'A'
 #define MAX_CAP_CHAR 'Z'
 #define OFF_CHAR 'a' - 'A'

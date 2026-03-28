@@ -743,7 +743,7 @@ _chan *ch = (_chan *)chref.ref;
 			elist[0] = _unix_erstr(errno);
 			signal(ERR_not_possible);
 			}
-		if (result != sizeof(CLUREF)) {
+		if (result != 1) {
 			elist[0].str = unknown_error_STRING;
 			signal(ERR_not_possible);
 			}
@@ -776,13 +776,13 @@ _chan *ch = (_chan *)chref.ref;
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
 	for (;;) {
-		result = write(ch->wr.num, &i.num, sizeof(CLUREF));
+		result = write(ch->wr.num, &i.num, 1);
 		if (result == -1 && errno == EINTR) continue;
 		if (result < 0) {
 			elist[0] = _unix_erstr(errno);
 			signal(ERR_not_possible);
 			}
-		if (result != sizeof(CLUREF)) {
+		if (result != 1) {
 			elist[0].str = unknown_error_STRING;
 			signal(ERR_not_possible);
 			}
@@ -858,7 +858,7 @@ _chan *ch = (_chan *)chref.ref;
 #if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
-	size = (top - low.num + 1) * sizeof(CLUREF);
+	size = (top - low.num + 1);
 	if (size <= 0) signal(ERR_ok);
 	for (;;) {
 		result = write(ch->wr.num, &bv.str->data[low.num-1], size);
@@ -895,7 +895,7 @@ _chan *ch = (_chan *)chref.ref;
 		elist[0].str = cannot_write_to_this__chan_STRING;
 		signal(ERR_not_possible);
 		}
-	if (low.num < 1 || low.num >= wv.vec->size) signal(ERR_bounds);
+	if (low.num < 1 || low.num > wv.vec->size) signal(ERR_bounds);
 	top = wv.vec->size;
 	if (high.num < top) top = high.num;
 	if (image.tf == true && ch->typ.num == tty) 
@@ -904,10 +904,10 @@ _chan *ch = (_chan *)chref.ref;
 #if !defined(LINUX) && !defined(FREEBSD)
 	if (lit) result = ioctl(ch->wr.num, TIOCLBIS, LLITOUT);
 #endif
-	size = (top - low.num + 1) * sizeof(CLUREF);
+	size = (top - low.num + 1);
 	if (size <= 0) signal(ERR_ok);
 	for (;;) {
-		result = write(ch->wr.num, &wv.vec->data[low.num-1], size);
+		result = write(ch->wr.num, ((char*)wv.vec->data) + low.num - 1, size);
 		if (result == -1 && errno == EINTR) continue;
 		if (result == -1) {
 			elist[0] = _unix_erstr(errno);
@@ -1218,9 +1218,9 @@ CLUREF chref, image;
 CLUREF *ans;
 {
 int result;
-char temp;
-int echo_count;
-char echo_buf[10];
+	CLUREF temp;
+	int echo_count;
+	char echo_buf[10];
 _chan *ch  = (_chan *)chref.ref;
 
 	if (ch->rd.num < 0) {
@@ -1228,7 +1228,7 @@ _chan *ch  = (_chan *)chref.ref;
 		signal(ERR_not_possible);
 		}
 	while (1) {
-		result = read(ch->rd.num, &temp, sizeof(CLUREF));
+		result = read(ch->rd.num, &temp.ch, 1);
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);
@@ -1240,16 +1240,16 @@ _chan *ch  = (_chan *)chref.ref;
 	/* check for no echo */
 	if (ch->typ.num != 0 || image.tf == true) {
 		/* printf("no echo %d %d %x\n", ch->typ.num, image.tf, temp); */
-		ans->ch = temp;
+		ans->ch = temp.ch;
 		signal(ERR_ok);
 		}
 
 	/* echo */
 	/* printf("echoing %x\n", temp);  */
-	echo_buf[0] = temp;
+	echo_buf[0] = temp.ch;
 	echo_count = 1;
-	if (temp >= '\177') { /* meta character */
-		if (temp == '\177') {
+	if (temp.ch >= '\177') { /* meta character */
+		if (temp.ch == '\177') {
 			echo_count++;
 			echo_buf[0] = '^';
 			echo_buf[1] = '?';
@@ -1272,8 +1272,8 @@ _chan *ch  = (_chan *)chref.ref;
 		}
 
 	else { /* not a meta character */
-		if (temp < ' ') { /* control character */
-			if (temp != '\n' && temp != '\t') {
+		if (temp.ch < ' ') { /* control character */
+			if (temp.ch != '\n' && temp.ch != '\t') {
 				echo_count++;
 				echo_buf[1] = echo_buf[0];
 				echo_buf[0] = '^';
@@ -1283,7 +1283,7 @@ _chan *ch  = (_chan *)chref.ref;
 
 
 	result = write(ch->wr.num, echo_buf, echo_count);
-	ans->ch = temp;
+	ans->ch = temp.ch;
 	signal(ERR_ok);
 	}
 	
@@ -1293,9 +1293,9 @@ CLUREF chref, image;
 CLUREF *ans;
 {
 int result;
-int temp;
-int echo_count;
-char echo_buf[10];
+	CLUREF temp;
+	int echo_count;
+	char echo_buf[10];
 _chan *ch  = (_chan *)chref.ref;
 
 	if (ch->rd.num < 0) {
@@ -1303,7 +1303,7 @@ _chan *ch  = (_chan *)chref.ref;
 		signal(ERR_not_possible);
 		}
 	while (1) {
-		result = read(ch->rd.num, &temp, sizeof(CLUREF));
+		result = read(ch->rd.num, &temp.num, 1);
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);
@@ -1314,15 +1314,15 @@ _chan *ch  = (_chan *)chref.ref;
 	
 	/* check for no echo */
 	if (ch->typ.num != 0 || image.tf == true) {
-		ans->num = temp;
+		ans->num = temp.num;
 		signal(ERR_ok);
 		}
 
 	/* echo */
-	echo_buf[0] = temp;
+	echo_buf[0] = temp.ch;
 	echo_count = 1;
-	if (temp >= '\177') { /* meta character */
-		if (temp == '\177') {
+	if (temp.ch >= '\177') { /* meta character */
+		if (temp.ch == '\177') {
 			echo_count++;
 			echo_buf[0] = '^';
 			echo_buf[1] = '?';
@@ -1345,8 +1345,8 @@ _chan *ch  = (_chan *)chref.ref;
 		}
 
 	else { /* not a meta character */
-		if (temp < ' ') { /* control character */
-			if (temp != '\n' && temp != '\t') {
+		if (temp.ch < ' ') { /* control character */
+			if (temp.ch != '\n' && temp.ch != '\t') {
 				echo_count++;
 				echo_buf[1] = echo_buf[0];
 				echo_buf[0] = '^';
@@ -1399,7 +1399,7 @@ _chan *ch  = (_chan *)chref.ref;
 		elist[0].str = cannot_read_from_this__chan_STRING;
 		signal(ERR_not_possible);
 		}
-	if (bv.str->size == 0) signal(ERR_bounds);
+	if (bv.str->size == 0) signal(ERR_ok);
 	while (1) {
 		result = read(ch->rd.num, bv.str->data, bv.str->size);
 		if (result == -1 && errno == EINTR) continue;
@@ -1428,9 +1428,9 @@ _chan *ch  = (_chan *)chref.ref;
 		elist[0].str = cannot_read_from_this__chan_STRING;
 		signal(ERR_not_possible);
 		}
-	if (bv.str->size == 0) signal(ERR_bounds);
+	if (bv.str->size == 0) signal(ERR_ok);
 	while (1) {
-		result = read(ch->rd.num, &bv.str->data[strt.num-1], count);
+		result = read(ch->rd.num, ((char*)bv.str->data) + strt.num - 1, count);
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);

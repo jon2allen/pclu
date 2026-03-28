@@ -29,50 +29,34 @@ gc_read = proc[t:type](fn:file_name) returns (t)
 	    bv8[3] ~= 'C' cor
 	    bv8[4] ~= '1')
 	   then
-		signal not_possible("bad file format")
+		signal not_possible("bad file format: header mismatch")
 	   end
 
-	% if first item is a constant, return it to caller
-	_chan$getb(ch, bv8)
-	%log_bytevec(bv8)
-
-	%logit("gc_read: checking for const")
-	if wv2[1] = GCD_CONST
-	   then
-		%logit("  found const")
-		return(_cvt[int,t](wv2[2]))
-	   end
-
-	% first item should be a reference to 0th object
-	%logit("gc_read: checking for ref")
-	if wv2[1] ~= GCD_REF
-	   then
-		%logit("  found " || int$unparse(wv2[1]) || " instead of ref")
-		signal not_possible("bad file format")
-	   end
-	if wv2[2] ~= 0
-	   then
-		%logit("  found " || int$unparse(wv2[2]) || " instead of 0")
-		signal not_possible("bad file format")
-	   end
-	%logit("  found " || int$unparse(wv2[1]) || ", " || int$unparse(wv2[2]))
-
-	% grovel over file for the 1st time
-	%logit("starting pass 1")
+	% find root object reference
+	_chan$getb(ch, bv8)        % read words 3 and 4
+	ref_loc: int := 0
+	if wv2[1] = GCD_REF then ref_loc := 1
+	elseif wv2[2] = GCD_REF then ref_loc := 2
+	end
+	if ref_loc = 0 then
+	   signal not_possible("bad file format: Root Reference not found")
+	end
+	% Pass 1: find all pointers
+	gcb$init()
 	gcr$pass1(ch)
-	  resignal not_possible
+	   resignal not_possible
 	_chan$close(ch)
 
-	% reopen file (could just do a seek)
+	% reopen file
 	ch := _chan$open(fn, "read", 0)
-	_chan$getb(ch, bv8)
-	_chan$getb(ch, bv8)
+	   resignal not_possible
+	_chan$getb(ch, bv8) % skip words 1-2
+	_chan$getb(ch, bv8) % skip words 3-4
 
-	% grovel over file for the 2nd time
-	%logit("starting pass 2")
-	  resignal not_possible
+	% Pass 2: read all objects
 	gcb$init()
 	gcr$pass2(ch)
+	   resignal not_possible
 	_chan$close(ch)
 	
 	% return 0th object to caller
@@ -80,8 +64,13 @@ gc_read = proc[t:type](fn:file_name) returns (t)
 	gco$reset()
 	return(result)
 	end
-       except others: 
+       except when not_possible(why: string):
+                   _chan$close(ch)
+                   logit("gc_read: not_possible: " || why)
+                   signal not_possible(why)
+              others: 
 		   _chan$close(ch)
+		   logit("gc_read: unexpected error!")
 		   signal not_possible("bad file format")
 	      end
     end gc_read

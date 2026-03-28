@@ -1,1 +1,1 @@
-ccdbg.cmd.freebsd
+ccdbg.cmd.linux

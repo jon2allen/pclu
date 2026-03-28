@@ -173,6 +173,7 @@ long size, i, j;
 
 	for (i = 0, j = s1.str->size; i < s2.str->size; i++, j++)
 		temp.str->data[j] = s2.str->data[i];
+	temp.str->data[j] = '\000';
 	ans->str = temp.str;
 	signal(ERR_ok);
 	}
@@ -199,6 +200,7 @@ long i;
 	for (i = 0; i < s.str->size; i++)
 		temp.str->data[i] = s.str->data[i];
 	temp.str->data[size-1] = c.ch;
+	temp.str->data[size] = '\000';
 	ans->str = temp.str;
 	signal(ERR_ok);
 	}
@@ -290,6 +292,7 @@ long i, j;
 		c.num = a.array->store->data[j];
 		temp.str->data[i] = c.ch;
 		}
+	temp.str->data[i] = '\000';
 	ans->str = temp.str;
 	signal(ERR_ok);
 	}
@@ -326,6 +329,7 @@ long i;
 	for (i = 0; i < a.vec->size; i++) {
 		temp.str->data[i] = a.vec->data[i];
 		}
+	temp.str->data[i] = '\000';
 	ans->str = temp.str;
 	signal(ERR_ok);
 	}

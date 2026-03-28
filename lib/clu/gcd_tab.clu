@@ -178,13 +178,6 @@ gcd_tab = cluster is grind, grindc, grindp
 	gcd_store$store_id()
 	   resignal not_possible
 	val: int := t$_gcd(x, tab)
-	%logit("back from t$_gcd")
-	if val < 0
-	   then gcd_store$store_lit(_cvt[t, int](x))
-		   resignal not_possible
-	   else gcd_store$store_ref(val)
-		   resignal not_possible
-	   end
 	iq: ainf := down(tab).iq
 	oq: aobj := down(tab).oq
 	while true do
@@ -379,7 +372,10 @@ gcd_store = cluster is init, store_id, store_lit, store_ref, store_hdr,
 	bvec$store(w2b(buf), 2, 'W')
 	bvec$store(w2b(buf), 3, 'C')
 	bvec$store(w2b(buf), 4, '1')
-	pos := 3
+	buf[2] := 0
+	buf[3] := GCD_REF
+	buf[4] := 0
+	pos := 5
 	end store_id
 
     store_lit = proc(i1: int) signals (not_possible (string))
