@@ -69,3 +69,46 @@ The runtime channel implementation (`_chan.c`) was found to have multiple hardco
 - Replaced hardcoded `1` and word-based counts in `_chan.c` with `sizeof(CLUREF)` (8 bytes).
 - Rebuilt `libpclu_opt.a`, relinked `pclu`, and regenerated all `.lib` files.
 - Verified that `cludent` now compiles and runs correctly.
+
+## 7. Library Merge Issue (March 30, 2026)
+
+**Status: Under investigation**
+
+The library merge (`#me lowlev.lib`) fails with "bad file format". This blocks `cludent` and `useful.lib` builds.
+
+### Root Cause
+The dumper (`gcd_tab.c`, `store_id`) writes the header with `pos=3`, meaning grind data starts at `buf[3]`. The grind function patches `buf[1]` and writes 8 words at offset 8. The resulting file layout is:
+```
+Offset 0:   "DWC1\0\0\0\0"        (8 bytes)
+Offset 8:   buf[1] = next addr     (patched)
+Offset 16:  buf[2] = grind item 1  (bzero expected, but NOT zeroed)
+Offset 24:  buf[3] = GCD_REF (33)  (root type written by grind)
+Offset 32:  buf[4] = root addr     (0)
+```
+
+The reader (`gc_read.c`) expects GCD_REF at offset 16 (buf[2]) but finds grind data there.
+
+### What Works
+- `make veryclean && make gc clu` builds successfully
+- Compiler (`pclu`) compiles and links natively as 64-bit
+- `misc.lib` dumps successfully
+- `lowlev.lib` dumps successfully (without `#forget` clause)
+- Hello World compiles, links, and runs correctly
+- Library dump creates valid `.lib` files (verified via hex dump)
+
+### What Doesn't Work
+- Library merge (`#me lowlev.lib`) fails with "bad file format"
+- `cludent` build blocked by merge failure
+- `#forget` clause causes `failure: bounds` during dump
+
+### Investigation Notes
+- The `_wordvecOPcreate` bzero fix doesn't prevent garbage in `buf[2]`
+- Modifying `store_id` to set `pos=5` with explicit header writes causes `failure: bounds`
+- The `grind` function patches `buf[1]` but `buf[2]` remains uninitialized
+- The `gcb$getb` function uses `wvec$move_w2b` which reads from word-aligned positions
+- The `#forget` directive may trigger bounds errors in the dump process
+
+### Needed Fix
+Either:
+1. Add a padding word (buf[2]=0) in `store_id` and shift grind start to pos=4, OR
+2. Fix the reader to match the actual writer format (GCD_REF at data[1] not data[0])
