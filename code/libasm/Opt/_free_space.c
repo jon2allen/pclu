@@ -38,17 +38,14 @@ CLUREF *ans;
 	}
 
 #else
-/*
-extern int GC_max_heapsize;
-extern int GC_composite_in_use;
-extern int GC_atomic_in_use;
-*/
-
+/* Boehm GC 8.x modern API */
 errcode _free_space(ans)
 CLUREF *ans;
 {
-	ans->num = BYTES_TO_WORDS(GC_max_heapsize - GC_atomic_in_use
-				- GC_composite_in_use);
+	struct GC_prof_stats_s stats;
+	GC_get_prof_stats(&stats, sizeof(stats));
+	/* free_bytes_full includes both free bytes and unmapped bytes */
+	ans->num = BYTES_TO_WORDS(stats.free_bytes_full);
 	signal(ERR_ok);
-	}
+}
 #endif

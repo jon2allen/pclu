@@ -743,7 +743,7 @@ _chan *ch = (_chan *)chref.ref;
 			elist[0] = _unix_erstr(errno);
 			signal(ERR_not_possible);
 			}
-		if (result != sizeof(CLUREF)) {
+		if (result != 1) {
 			elist[0].str = unknown_error_STRING;
 			signal(ERR_not_possible);
 			}
@@ -1228,7 +1228,7 @@ _chan *ch  = (_chan *)chref.ref;
 		signal(ERR_not_possible);
 		}
 	while (1) {
-		result = read(ch->rd.num, &temp, sizeof(CLUREF));
+		result = read(ch->rd.num, &temp, 1);
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);
@@ -1303,7 +1303,7 @@ _chan *ch  = (_chan *)chref.ref;
 		signal(ERR_not_possible);
 		}
 	while (1) {
-		result = read(ch->rd.num, &temp, sizeof(CLUREF));
+		result = read(ch->rd.num, &temp, sizeof(int));
 		if (result == -1 && errno == EINTR) continue;
 		if (result >= 0) break;
 		elist[0] = _unix_erstr(errno);

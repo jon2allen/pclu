@@ -63,7 +63,26 @@ extern struct obj * gc_malloc();
 extern void gc_init();
 extern char *clu_errlist[];
 extern char *clu_uerrlist[];
-extern void clu_alloc();
+/* Replacement for clu_alloc previously patched into Boehm GC */
+void clu_alloc(size_t lb, char **ans)
+{
+    *ans = (char *)GC_MALLOC(lb);
+    if (*ans == NULL) {
+        fprintf(stderr, "clu_alloc: heap exhausted\n");
+        // No easy way to signal a CLU exception from here since it's a void function,
+        // but this mimics the failure behavior.
+        exit(-1);
+    }
+}
+
+void clu_alloc_atomic(size_t lb, char **ans)
+{
+    *ans = (char *)GC_MALLOC_ATOMIC(lb);
+    if (*ans == NULL) {
+        fprintf(stderr, "clu_alloc_atomic: heap exhausted\n");
+        exit(-1);
+    }
+}
 extern errcode clu_err_string_init();
 extern errcode clu_int_init();
 char **environ;
