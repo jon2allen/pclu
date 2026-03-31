@@ -3,6 +3,7 @@
 
 #include "pclu_err.h"
 #include "pclu_sys.h"
+#include <stdio.h>
 
 
 /**** BEGIN CLUSTER xlib ****/
@@ -1149,6 +1150,7 @@ CLUREF fn;
             err = tableOPlookup(xlibOPtab, T_4_1, &T_4_2);
             if (err != ERR_ok) goto ex_2;
             err = duOPforget_specs(T_4_2);
+            fprintf(stderr, "DEBUG unmerge: after forget_specs, err=%d\n", err);
             if (err != ERR_ok) goto ex_2;
             }
                 goto end_2;

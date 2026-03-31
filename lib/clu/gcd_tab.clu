@@ -63,9 +63,9 @@ gcd_tab = cluster is grind, grindc, grindp
 	_event$defer()
 	begin
 	    mgrind[t](tab, buf, ch, x)
-	    buf[1] := down(tab).next
+	    buf[1] := GCD_REF
 	    ch.access := CLUREFSZ
-	    _chan$putw(ch, buf, 1, 1, false)
+	    _chan$putw(ch, buf, 1, 4, false)
 	    end except when not_possible (why: string):
 			    _event$undefer()
 			    _chan$abort(ch)
@@ -94,9 +94,9 @@ gcd_tab = cluster is grind, grindc, grindp
 	_event$defer()
 	begin
 	    mgrind[t](tab, buf, ch, x)
-	    buf[1] := down(tab).next
+	    buf[1] := GCD_REF
 	    ch.access := pos + CLUREFSZ
-	    _chan$putw(ch, buf, 1, 1, false)
+	    _chan$putw(ch, buf, 1, 4, false)
 	    end except when not_possible (why: string):
 			    _event$undefer()
 			    signal not_possible(why)

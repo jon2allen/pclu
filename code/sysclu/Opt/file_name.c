@@ -329,8 +329,8 @@ CLUREF *ret_1;
     if (err != ERR_ok) goto ex_0;
     T_1_1.vec->data[0]  = T_1_2.num;
     T_1_1.vec->data[1]  = name.num;
-    T_1_1.vec->data[3]  = suffix.num;
-    T_1_1.vec->data[2]  = other.num;
+    T_1_1.vec->data[2]  = suffix.num;
+    T_1_1.vec->data[3]  = other.num;
     ret_1->num = T_1_1.num;
     }
     {signal (ERR_ok);}}
@@ -476,8 +476,8 @@ CLUREF *ret_1;
     RecordAlloc(4, T_1_1);
     T_1_1.vec->data[0]  = dir.num;
     T_1_1.vec->data[1]  = name.num;
-    T_1_1.vec->data[3]  = suffix.num;
-    T_1_1.vec->data[2]  = s.num;
+    T_1_1.vec->data[2]  = suffix.num;
+    T_1_1.vec->data[3]  = s.num;
     ret_1->num = T_1_1.num;
     }
     {signal (ERR_ok);}}
@@ -572,13 +572,13 @@ CLUREF *ret_1;
     CLUREF T_1_5;
     CLUREF T_1_6;
     CLUREF T_1_7;
-    T_1_2.num = x.vec->data[3];
+    T_1_2.num = x.vec->data[2];
     err = stringOPempty(T_1_2, &T_1_3);
     if (err != ERR_ok) goto ex_0;
     T_1_4.num = T_1_3.num ^ 1;
     T_1_1.num = T_1_4.num;
     if (!T_1_4.num) {
-        T_1_5.num = x.vec->data[2];
+        T_1_5.num = x.vec->data[3];
         err = stringOPempty(T_1_5, &T_1_6);
         if (err != ERR_ok) goto ex_0;
         T_1_7.num = T_1_6.num ^ 1;
@@ -595,7 +595,7 @@ CLUREF *ret_1;
         T_2_1.ch = '.';
         err = stringOPappend(s, T_2_1, &T_2_2);
         if (err != ERR_ok) goto ex_0;
-        T_2_3.num = x.vec->data[3];
+        T_2_3.num = x.vec->data[2];
         err = stringOPconcat(T_2_2, T_2_3, &T_2_4);
         if (err != ERR_ok) goto ex_0;
         s.num = T_2_4.num;
@@ -608,7 +608,7 @@ CLUREF *ret_1;
     CLUREF T_1_1;
     CLUREF T_1_2;
     CLUREF T_1_3;
-    T_1_1.num = x.vec->data[2];
+    T_1_1.num = x.vec->data[3];
     err = stringOPempty(T_1_1, &T_1_2);
     if (err != ERR_ok) goto ex_0;
     T_1_3.num = T_1_2.num ^ 1;
@@ -623,7 +623,7 @@ CLUREF *ret_1;
         T_2_1.ch = '.';
         err = stringOPappend(s, T_2_1, &T_2_2);
         if (err != ERR_ok) goto ex_0;
-        T_2_3.num = x.vec->data[2];
+        T_2_3.num = x.vec->data[3];
         err = stringOPconcat(T_2_2, T_2_3, &T_2_4);
         if (err != ERR_ok) goto ex_0;
         s.num = T_2_4.num;
@@ -741,7 +741,7 @@ CLUREF *ret_1;
     {
     {
     CLUREF T_1_1;
-    T_1_1.num = x.vec->data[3];
+    T_1_1.num = x.vec->data[2];
     ret_1->num = T_1_1.num;
     }
     {signal (ERR_ok);}}
@@ -777,7 +777,7 @@ CLUREF *ret_1;
     {
     {
     CLUREF T_1_1;
-    T_1_1.num = x.vec->data[2];
+    T_1_1.num = x.vec->data[3];
     ret_1->num = T_1_1.num;
     }
     {signal (ERR_ok);}}
@@ -856,7 +856,7 @@ CLUREF *ret_1;
 
   LINE(121);
     {
-    x.vec->data[3]  = ext.num;
+    x.vec->data[2]  = ext.num;
     }
 
   LINE(122);
@@ -1213,13 +1213,13 @@ CLUREF ps;
     CLUREF T_1_5;
     CLUREF T_1_6;
     CLUREF T_1_7;
-    T_1_2.num = x.vec->data[3];
+    T_1_2.num = x.vec->data[2];
     err = stringOPempty(T_1_2, &T_1_3);
     if (err != ERR_ok) goto ex_0;
     T_1_4.num = T_1_3.num ^ 1;
     T_1_1.num = T_1_4.num;
     if (!T_1_4.num) {
-        T_1_5.num = x.vec->data[2];
+        T_1_5.num = x.vec->data[3];
         err = stringOPempty(T_1_5, &T_1_6);
         if (err != ERR_ok) goto ex_0;
         T_1_7.num = T_1_6.num ^ 1;
@@ -1240,7 +1240,7 @@ CLUREF ps;
         {
         CLUREF T_2_1;
         CLUREF T_2_2;
-        T_2_1.num = x.vec->data[3];
+        T_2_1.num = x.vec->data[2];
         err = pstreamOPtext(ps, T_2_1, &T_2_2);
         if (err != ERR_ok) goto ex_0;
         }
@@ -1252,7 +1252,7 @@ CLUREF ps;
     CLUREF T_1_1;
     CLUREF T_1_2;
     CLUREF T_1_3;
-    T_1_1.num = x.vec->data[2];
+    T_1_1.num = x.vec->data[3];
     err = stringOPempty(T_1_1, &T_1_2);
     if (err != ERR_ok) goto ex_0;
     T_1_3.num = T_1_2.num ^ 1;
@@ -1271,7 +1271,7 @@ CLUREF ps;
         {
         CLUREF T_2_1;
         CLUREF T_2_2;
-        T_2_1.num = x.vec->data[2];
+        T_2_1.num = x.vec->data[3];
         err = pstreamOPtext(ps, T_2_1, &T_2_2);
         if (err != ERR_ok) goto ex_0;
         }

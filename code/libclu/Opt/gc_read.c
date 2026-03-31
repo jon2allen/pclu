@@ -1995,6 +1995,9 @@ CLUREF *ret_1;
     {
         {CLUREF T_1_1;
         if (gcbOPlook_index.num < 1 || (gcbOPlook_index.num<<3) > (gcbOPlookahead.str->size)) {
+            fprintf(stderr, "DEBUG bounds check: look_index=%ld, size=%ld, shift=%ld\n", 
+                   (long)gcbOPlook_index.num, (long)gcbOPlookahead.str->size, 
+                   (long)(gcbOPlook_index.num<<3));
             err = ERR_bounds;
             goto ex_0;}
         T_1_1.num = gcbOPlookahead.vec->data[gcbOPlook_index.num - 1];
@@ -2271,9 +2274,9 @@ CLUREF b;
         }/* end if */
 
   LINE(354);
-    {
-    CLUREF T_1_1;
-    T_1_1.num = gcbOPlook_count.num - pad_count.num;
+        {
+        CLUREF T_1_1;
+        T_1_1.num = gcbOPlook_count.num - pad_count.num;
      if ((T_1_1.num >= 0 && gcbOPlook_count.num < 0 && (-pad_count.num) < 0) || 
          (T_1_1.num <= 0 && gcbOPlook_count.num > 0 && (-pad_count.num) > 0)) {
         err = ERR_overflow;

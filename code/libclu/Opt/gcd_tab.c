@@ -310,7 +310,7 @@ CLUREF *ret_1;
         {
         CLUREF T_3_1;
         T_3_1.num = tab.vec->data[3];
-        err = _wordvecOPstore(buf, CLU_1, T_3_1);
+        err = _wordvecOPstore(buf, CLU_1, CLU_33);
         if (err != ERR_ok) goto ex_2;
         }
 
@@ -506,7 +506,7 @@ CLUREF pos;
         {
         CLUREF T_3_1;
         T_3_1.num = tab.vec->data[3];
-        err = _wordvecOPstore(buf, CLU_1, T_3_1);
+        err = _wordvecOPstore(buf, CLU_1, CLU_33);
         if (err != ERR_ok) goto ex_2;
         }
 
