@@ -322,7 +322,7 @@ CLUREF *ret_1;
 
   LINE(68);
         {
-        err = _chanOPputw(ch, buf, CLU_1, CLU_8, CLU_0);
+        err = _chanOPputw(ch, buf, CLU_1, CLU_4, CLU_0);
         if (err != ERR_ok) goto ex_2;
         }
         }
@@ -524,7 +524,7 @@ CLUREF pos;
 
   LINE(99);
         {
-        err = _chanOPputw(ch, buf, CLU_1, CLU_8, CLU_0);
+        err = _chanOPputw(ch, buf, CLU_1, CLU_4, CLU_0);
         if (err != ERR_ok) goto ex_2;
         }
         }
@@ -2284,7 +2284,25 @@ errcode gcd_storeOPstore_id()
 
   LINE(382);
     {
-    gcd_storeOPpos.num = 3;
+    err = _wordvecOPstore(gcd_storeOPbuf, CLU_2, CLU_0);
+    if (err != ERR_ok) goto ex_0;
+    }
+
+  LINE(383);
+    {
+    err = _wordvecOPstore(gcd_storeOPbuf, CLU_3, CLU_33);
+    if (err != ERR_ok) goto ex_0;
+    }
+
+  LINE(384);
+    {
+    err = _wordvecOPstore(gcd_storeOPbuf, CLU_4, CLU_0);
+    if (err != ERR_ok) goto ex_0;
+    }
+
+  LINE(385);
+    {
+    gcd_storeOPpos.num = 5;
     }
     goto end_0;
     ex_0:

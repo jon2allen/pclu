@@ -379,7 +379,10 @@ gcd_store = cluster is init, store_id, store_lit, store_ref, store_hdr,
 	bvec$store(w2b(buf), 2, 'W')
 	bvec$store(w2b(buf), 3, 'C')
 	bvec$store(w2b(buf), 4, '1')
-	pos := 3
+	buf[2] := 0
+	buf[3] := GCD_REF
+	buf[4] := 0
+	pos := 5
 	end store_id
 
     store_lit = proc(i1: int) signals (not_possible (string))

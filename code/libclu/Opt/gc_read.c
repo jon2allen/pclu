@@ -3,6 +3,7 @@
 
 #include "pclu_err.h"
 #include "pclu_sys.h"
+#include <stdio.h>
 
 
 
@@ -210,6 +211,13 @@ CLUREF *ret_1;
         if (err != ERR_ok) goto ex_1;
         }
 
+  LINE(38);
+        {
+        CLUREF T_3_1;
+        err = _chanOPgetb(ch, bv8, &T_3_1);
+        if (err != ERR_ok) goto ex_1;
+        }
+
   LINE(40);
         {
         CLUREF T_3_1;
@@ -246,6 +254,7 @@ CLUREF *ret_1;
             err = ERR_bounds;
             goto ex_1;}
         T_3_1.num = wv2.vec->data[1 - 1];
+        fprintf(stderr, "DEBUG gc_read: format word[0]=%ld (expected 33)\n", T_3_1.num);
         T_3_2.num = (T_3_1.num == 33)? true : false;
         T_3_3.num = T_3_2.num ^ 1;
         if (T_3_3.num == true) {
@@ -266,6 +275,7 @@ CLUREF *ret_1;
             err = ERR_bounds;
             goto ex_1;}
         T_3_1.num = wv2.vec->data[2 - 1];
+        fprintf(stderr, "DEBUG gc_read: GCD_REF word[1]=%ld (expected 0)\n", T_3_1.num);
         T_3_2.num = (T_3_1.num == 0)? true : false;
         T_3_3.num = T_3_2.num ^ 1;
         if (T_3_3.num == true) {
