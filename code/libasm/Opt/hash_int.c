@@ -30,7 +30,7 @@ CLUREF i, j, *ans;
 		ans->num = 0;
 		signal(ERR_ok);
 		}
-	ans->num = i.num % (unsigned) (j.num);
-        if (ans->num < 0) ans->num += j.num;          /* Added by MTV */
+	unsigned long sum = (unsigned long)i.num % (unsigned long)j.num;
+	ans->num = (long)sum;
 	signal(ERR_ok);
 	}

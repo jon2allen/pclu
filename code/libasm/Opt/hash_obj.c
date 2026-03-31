@@ -30,9 +30,8 @@ int temp, temp2;
 
 	if (max.num == 0) ans->num = 0;
 	else {
-		temp = _obj.num / 8;
-		temp2 = temp % max.num ;
-		ans->num = temp2;
+		unsigned long temp = (unsigned long)_obj.num / 8;
+		ans->num = (long)(temp % (unsigned long)max.num);
 		}	
 	signal(ERR_ok);
 	}

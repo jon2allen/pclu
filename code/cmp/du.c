@@ -99,8 +99,6 @@ CLUREF *ret_1;
             if (err != ERR_ok) goto ex_0;
             }
     enter_proc(34);
-    fprintf(stderr, "DEBUG ENTER create: store size=%ld fixups size=%ld cache size=%ld\n",
-            duOPstore.array->ext_size, duOPfixups.array->ext_size, duOPcache.array->ext_size);
 
   LINE(35);
     {
@@ -628,14 +626,12 @@ CLUREF d;
             if (err != ERR_ok) goto ex_0;
             }
     enter_proc(92);
-    fprintf(stderr, "DEBUG ENTER forget_specs\n");
 
   LINE(93);
     {
     CLUREF T_1_1;
     CLUREF T_1_2;
     T_1_1.num = d.vec->data[0];
-    fprintf(stderr, "DEBUG forget_specs: d.index = %ld, keepmax = %ld\n", T_1_1.num, duOPkeepmax.num);
     T_1_2.num = (T_1_1.num > duOPkeepmax.num)? true : false;
     if (T_1_2.num == true) {
 
@@ -644,16 +640,12 @@ CLUREF d;
         CLUREF T_2_1;
         CLUREF T_2_2;
         T_2_1.num = d.vec->data[0];
-        fprintf(stderr, "DEBUG forget_specs: accessing store[%ld], ext_low=%ld, ext_high=%ld, ext_size=%ld\n",
-                T_2_1.num, duOPstore.array->ext_low, duOPstore.array->ext_high, duOPstore.array->ext_size);
         CellAlloc(4, nil, T_2_2);
         {
         if (T_2_1.num < duOPstore.array->ext_low || T_2_1.num > duOPstore.array->ext_high) {
-            fprintf(stderr, "DEBUG forget_specs: BOUNDS CHECK FAILED!\n");
             err = ERR_bounds;
             goto ex_0;}
         duOPstore.array->store->data[T_2_1.num + duOPstore.array->int_low - duOPstore.array->ext_low] = T_2_2.num;
-        fprintf(stderr, "DEBUG forget_specs: store set OK\n");
         }
         }
 
@@ -663,12 +655,9 @@ CLUREF d;
         T_2_1.num = d.vec->data[0];
         {
         if (T_2_1.num < duOPfixups.array->ext_low || T_2_1.num > duOPfixups.array->ext_high) {
-            fprintf(stderr, "DEBUG forget_specs: BOUNDS CHECK FAILED on fixups! idx=%d ext_low=%d ext_high=%d\n",
-                    T_2_1.num, duOPfixups.array->ext_low, duOPfixups.array->ext_high);
             err = ERR_bounds;
             goto ex_0;}
         duOPfixups.array->store->data[T_2_1.num + duOPfixups.array->int_low - duOPfixups.array->ext_low] = false;
-        fprintf(stderr, "DEBUG forget_specs: fixups set OK\n");
         }
         }
 
@@ -680,12 +669,9 @@ CLUREF d;
         CellAlloc(1, nil, T_2_2);
         {
         if (T_2_1.num < duOPcache.array->ext_low || T_2_1.num > duOPcache.array->ext_high) {
-            fprintf(stderr, "DEBUG forget_specs: BOUNDS CHECK FAILED on cache! idx=%d ext_low=%d ext_high=%d\n",
-                    T_2_1.num, duOPcache.array->ext_low, duOPcache.array->ext_high);
             err = ERR_bounds;
             goto ex_0;}
         duOPcache.array->store->data[T_2_1.num + duOPcache.array->int_low - duOPcache.array->ext_low] = T_2_2.num;
-        fprintf(stderr, "DEBUG forget_specs: cache set OK\n");
         }
         }
         }

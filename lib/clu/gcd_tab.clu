@@ -188,6 +188,7 @@ gcd_tab = cluster is grind, grindc, grindp
 	iq: ainf := down(tab).iq
 	oq: aobj := down(tab).oq
 	while true do
+	    logit("mgrind: loop start, iq size = " || int$unparse(ainf$size(iq)))
 	    tagcase ainf$reml(iq)
 	       tag a_bvec:
 		   % handle _bytevecs and strings
@@ -418,6 +419,7 @@ gcd_store = cluster is init, store_id, store_lit, store_ref, store_hdr,
 	need(1)
 	   resignal not_possible
 	buf[pos] := hid
+	%logit("store_hdr: wrote hid " || int$unparse(hid) || " at pos " || int$unparse(pos))
 	pos := pos + 1
 	need(1)
 	   resignal not_possible
@@ -477,6 +479,7 @@ gcd_store = cluster is init, store_id, store_lit, store_ref, store_hdr,
 	total_output: int := 0
 	i: int := 1
 	while true do
+	    %logit("store_string: calling need(" || int$unparse(rounded_longs) || ")")
 	    avail: int := need(rounded_longs)
 	       resignal not_possible
 	    copy_count: int := int$min(bytes_to_go, avail*CLUREFSZ)
@@ -496,7 +499,7 @@ gcd_store = cluster is init, store_id, store_lit, store_ref, store_hdr,
 	end store_string
 
     done = proc() signals (not_possible (string))
-	%logit("enter/exit gcd_store$store_done")
+	logit("done: flushing " || int$unparse(pos-1) || " words")
 	_chan$putw(ch, buf, 1, CLUREFSZ * (pos-1), false)
 	   resignal not_possible
 	end done
